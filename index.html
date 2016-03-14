@@ -1,0 +1,311 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>FixSPD</title>
+  <base target="_self">
+  <meta name="description" content="A admin dashboard theme that will get you started with Bootstrap 4." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" value="notranslate">
+  <link rel="shortcut icon" href="/img/codeply_ico.jpg">
+  
+
+  
+  <!--stylesheets / link tags loaded here-->
+
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+  
+
+  
+
+  <style type="text/css">body {
+  padding-top:62px;
+}
+
+body, html {
+  height:100%;
+}
+
+/* workaround modal-open padding issue */
+body.modal-open {
+    padding-right:0 !important;
+}
+
+/* workaround bs 4 horizontal scrollbar */
+.container-fluid >.row {
+    margin-left: -15px;
+    margin-right: -10px;
+}
+
+#sidebar {
+   padding-left:0;
+}
+
+/*
+ * Off Canvas at medium breakpoint
+ * --------------------------------------------------
+ */
+@media screen and (max-width: 48em) {
+
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+  }
+
+  .row-offcanvas-left
+  .sidebar-offcanvas {
+    left: -33%;
+  }
+
+  .row-offcanvas-left.active {
+    left: 33%;
+  }
+
+  .sidebar-offcanvas {
+    background-color:#f6f6f6;
+    position: absolute;
+    top: 0;
+    width: 33%;
+    height: 100%;
+  }
+}
+
+/*
+ * Off Canvas wider at sm breakpoint
+ * --------------------------------------------------
+ */
+@media screen and (max-width: 34em) {
+  .row-offcanvas-left
+  .sidebar-offcanvas {
+    left: -45%;
+  }
+
+  .row-offcanvas-left.active {
+    left: 45%;
+  }
+  
+  .sidebar-offcanvas {
+    width: 45%;
+  }
+}
+
+
+/* responsive nav stacked liked 3.x */
+@media(max-width:34em) {
+    .navbar .navbar-brand {
+        float:none;
+        display: block;
+    }
+    .navbar .navbar-nav>.nav-item {
+        float: none;
+        margin-left: .1rem;
+    }
+    .navbar .navbar-nav {
+        float:none !important;
+    }
+}
+
+.card {
+    overflow:hidden;
+}
+
+.card-block .rotate {
+    z-index: 8;
+    float: right;
+    height: 100%;
+}
+
+.card-block .rotate i {
+    color: rgba(20, 20, 20, 0.15);
+    position: absolute;
+    left: 0;
+    left: auto;
+    right: -10px;
+    bottom: 0;
+    display: block;
+    -webkit-transform: rotate(-44deg);
+    -moz-transform: rotate(-44deg);
+    -o-transform: rotate(-44deg);
+    -ms-transform: rotate(-44deg);
+    transform: rotate(-44deg);
+}
+.navbar-brand {
+padding-left:48px;
+background:url('logo.png') 0 7px no-repeat;
+}
+html, body {height: 100%}
+
+.sidebar{
+    background-color:#eee;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+}
+</style>
+
+</head>
+<body >
+  <nav class="navbar navbar-fixed-top navbar-dark bg-primary">
+    <button class="navbar-toggler hidden-sm-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+        ☰
+    </button>
+    <a class="navbar-brand" href="#">FixSPD</a>
+    <div class="collapse navbar-toggleable-xs" id="collapsingNavbar">
+        <ul class="nav navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">About FixSPD</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">InsideSPD (our news publication)</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#features">Problem focuses</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#myAlert">Get involved</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container-fluid" id="main">
+    <div class="row row-offcanvas row-offcanvas-left">
+        
+        <!--/col-->
+
+        <div class="col-md-9 col-lg-10 main">
+            <p>The mission of FixSPD is to educate the public about the problems at the Seattle Police Department and develop solutions.</p>
+            <h2>SPD refuses to give its 911 call takers and dispatchers the simple software they need to keep Seattleites safe</h2>
+            <p>When you call 911 asking why the police haven't arrived and to give new information, the call taker doesn't know that you 
+            called prior. It can take upwards of 30 seconds to locate and pull up the previous call. This is 30 seconds on a busy night that someone 
+            trying to report a shooting has to wait. If one is trying to call the fire department to report a house fire with people trapped they
+            first have to wait for a call taker at SPD to answer the phone. When I was a Seattle Police Department employee I developed
+            working software that instantly shows a 911 caller's history. One call taker immediately asked for domestic violence history
+            be higlighted red. The call takers get the importance of this but not SPD leadership.</p>
+            <p>Seattle Police dispatchers prioritze what officers go to first. Unfortunately mistakes are being made. According to KING5, 
+            this year instead of sending officers to an accident caused by a drunk driver dispatchers 
+            sent officers in the same area to "liquor violation, a shoplifting incident, a car prowl, theft of a license plate and illegal dumping."
+            Nine calls to 911, several of which explain that one of the drivers was extremely intoxicated, were not enough to get SPD to show up.
+            Over three hours later the witnesses gave up on SPD and convinced the State Patrol to handle it. State Patrol immediately showed up
+            and arrested the at fault driver for drunk driving with a blood alcohol limit of 0.111.</p>
+            <p>The failure to respond to the drunk driving accident could have been prevented had SPD not disabled software I made. This 
+            software displays all short messages SPD staff write about incidents and highlights the ones with keywords dispatchers put in.
+            A simple protocol change could allow any call taker to write a message that gets highlighted in red on the screen of the Chief Dispatcher,
+            the equalivant of air traffic control for the entire city. Additionally the department can put together a list of keywords to ensure that nothing falls
+            through the cracks. In the DUI incident a call taker writing IMPORTANT or a Chief Dispatcher having keywords for DUIs like
+            APPEARS INTOXICATED and EXTREMELY INTOXICATED would have ensured officers were sent to this before the lower priority calls.</p>
+            <p>During a visit to the 911 center as an employee I asked a Chief Dispatcher what software he needed. He explained he needed a
+            way for important messages during major incidents like shootings to be highlighted on his screen. I whipped out my work laptop and implemented
+            the software. He then realized it would also help him in general if he could put in another keywords besides IMPORTANT.
+            I got the software working on his internet computer that is divorced from the dispatch software so nothing could go wrong. The next day
+            the Chief Operating Officer for the department put the software in use at the Real Time Center. Analysts used the software to get notified
+            of incidents they cared about. Also they were putting in suspect names and descriptions so that when someone called 911 about a car driving
+            recklessly that matched the description of a car from a drive by shooting they would know that pulling that car over was a high priority. Over the
+            next few weeks I made the software so good that my supervisor emailed saying "CAD remarks app; they [Real Time Crime Center] said it was the only thing that was consistently working for them this weekend
+            - even when the Versaterm app itself was having issues."</p>
+            <p>On August 24, 2015 the the Chief Information Officer lead a meeting in hopes of overcoming the push back by the 911 center Captain.
+            The Captain explained that quickly implementing simple apps isn't possible in 911 because its an emergency center. The Captain said that its common for there
+            to be many 911 callers waiting. When the CIO said "couldn't technology help with that" the Captain said no. As explained above
+            technology can speed up the processing of calls by repeat callers. When the Captain went after me about my visits to the 911 center
+            I tried to defend myself. He said "don't raise your voice at myself." I blew up and immediately left the room and started grabbing my things. I was
+            talked out of quiting.</p>
+            <p>IT staff took down the server that ran my software because IT doesn't like me. Brandon Bouier who made the mapping app for the Realtime Crime Center
+            talked about getting my software running again as the analysts requested. He never got it back up.</p>
+            <p>It has been over six months since very simple software was created to keep Seattleites safe. Seattle Police isn't working at all to get it implemented.
+            With the constant fraustration and anger about the refusal to use this software I decided to channel my anger into something constructive. FixSPD will
+            be a fully transparent organization dedicated to exposing the problems at Seattle Police and doing everything possible to fix them.</p>
+        </div>
+        <!--/main col-->
+    </div>
+
+</div>
+<!--/.container-->
+<footer class="container-fluid">
+    <p class="text-right small">©2015 Company</p>
+</footer>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Large Modal</h4>
+            </div>
+            <div class="modal-body">
+                This is a dashboard layout for Bootstrap 4. This is an example of the Modal component which you can use to show content. Any content can be placed inside the modal and it can use the Bootstrap grid classes.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary-outline" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+  
+  <script>
+    // sandbox disable popups
+    if (window.self !== window.top && window.name!="view1") {;
+      window.alert = function(){/*disable alert*/};
+      window.confirm = function(){/*disable confirm*/};
+      window.prompt = function(){/*disable prompt*/};
+      window.open = function(){/*disable open*/};
+    }
+    
+    // prevent href=# click jump
+    document.addEventListener("DOMContentLoaded", function() {
+      var links = document.getElementsByTagName("A");
+      for(var i=0; i < links.length; i++) {
+        if(links[i].href.indexOf('#')!=-1) {
+          links[i].addEventListener("click", function(e) {
+          console.debug("prevent href=# click");
+              if (this.hash) {
+                if (this.hash=="#") {
+                  e.preventDefault();
+                  return false;
+                }
+                else {
+    \\              /*
+                  var el = document.getElementById(this.hash.replace(/#/, ""));
+                  if (el) {
+                    el.scrollIntoView(true);
+                  }
+                  */
+                }
+              }
+              return false;
+          })
+        }
+      }
+    }, false);
+  </script>
+  
+  <!--scripts loaded here-->
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"></script>
+  
+  
+  
+  <script>
+  $(document).ready(function() {
+    
+  $('[data-toggle=offcanvas]').click(function() {
+    $('.row-offcanvas').toggleClass('active');
+  });
+  
+});
+  </script>
+
+</body>
+</html>
