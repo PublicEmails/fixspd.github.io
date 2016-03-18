@@ -23,9 +23,27 @@ function handleSimpleCount() {
   });
 }
 
+function handleSimpleCountsSum() {
+  $.each($('.socrata_sum_of_counts'), function(item) {
+    console.log($(this).attr('datas-url'))
+    var socrataUrls = $(this).attr('datas-url');
+    var item = $(this);
+    var total = 0;
+    $.each(socrataUrls.split(';'), function(i, url) {
+        var data = JSON.parse($.ajax({
+            type: "GET",
+            url: url,
+            async: false
+        }).responseText);
+        total += parseInt(data[0][Object.keys(data[0])[0]]);
+    });
+    item.text(total);
+  });
+}
 function main() {
     
     handleSimpleCount();
+    handleSimpleCountsSum();
 }
 
 if (!window.jQuery) {
