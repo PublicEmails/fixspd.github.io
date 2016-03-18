@@ -25,8 +25,8 @@ function handleSimpleCount() {
 
 function handleSimpleCountsSum() {
   $.each($('.socrata_sum_of_counts'), function(item) {
-    console.log($(this).attr('datas-url'))
-    var socrataUrls = $(this).attr('datas-url');
+    console.log($(this).attr('data-urls'))
+    var socrataUrls = $(this).attr('data-urls');
     var item = $(this);
     var total = 0;
     $.each(socrataUrls.split(';'), function(i, url) {
