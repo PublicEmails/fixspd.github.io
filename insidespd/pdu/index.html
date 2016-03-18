@@ -190,11 +190,11 @@ html, body {height: 100%}
 
         <div class="col-md-9 col-lg-10 main">
           <h2>Public Disclosure Unit</h2>
-          <script src="https://fixspd.org/js/webmaster_toolkit_for_socrata.js"></script> to your webpage
-To add a count(*) add something similar to
-<p>In the old records system there are <span class="socrata_count" 
+          <script src="https://fixspd.org/js/webmaster_toolkit_for_socrata.js"></script> 
+<p>There are <span class="socrata_sum_of_counts" 
+data-urls="https://data.seattle.gov/resource/a4j2-uu8v.json?$select=count(*)&$where=completed_date%20IS%20NULL;https://data.seattle.gov/resource/ppwx-mtmh.json?$select=count(*)&$where=close_date%20IS%20NULL"></span> total open requests, <span class="socrata_count" 
 data-url="https://data.seattle.gov/resource/a4j2-uu8v.json?$select=count(*)&$where=completed_date%20IS%20NULL"></span>
-open requests and <span class="socrata_count" 
+in the old system and <span class="socrata_count" 
 data-url="https://data.seattle.gov/resource/ppwx-mtmh.json?$select=count(*)&$where=close_date%20IS%20NULL"></span> in the new system.</p>
 
         </div>
