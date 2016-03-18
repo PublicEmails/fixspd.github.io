@@ -193,8 +193,9 @@ html, body {height: 100%}
           <script src="https://fixspd.org/js/webmaster_toolkit_for_socrata.js"></script> to your webpage
 To add a count(*) add something similar to
 <p>In the old records system there are <span class="socrata_count" 
-data-url="https://data.seattle.gov/resource/a4j2-uu8v.json?$select=count(*)&$where=completed_date IS NULL"></span>
-open requests.</p>
+data-url="https://data.seattle.gov/resource/a4j2-uu8v.json?$select=count(*)&$where=completed_date%20IS%20NULL"></span>
+open requests and <span class="socrata_count" 
+data-url="https://data.seattle.gov/resource/ppwx-mtmh.json?$select=count(*)&$where=close_date%20IS%20NULL"></span> in the new system.</p>
 
         </div>
         <!--/main col-->
