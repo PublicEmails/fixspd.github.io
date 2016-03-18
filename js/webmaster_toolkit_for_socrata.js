@@ -43,10 +43,14 @@ function handleSimpleCountsSum() {
 function main() {
     var plugins = ['https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/excanvas.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/jquery.jqplot.min.css', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/jquery.jqplot.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.BezierCurveRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.barRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.blockRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.bubbleRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.canvasAxisLabelRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.canvasAxisTickRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.canvasOverlay.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.canvasTextRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.categoryAxisRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.ciParser.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.cursor.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.dateAxisRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.donutRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.dragable.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.enhancedLegendRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.funnelRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.highlighter.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.json2.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.logAxisRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.mekkoAxisRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.mekkoRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.meterGaugeRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.mobile.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.ohlcRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.pieRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.pointLabels.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.pyramidAxisRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.pyramidGridRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.pyramidRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.trendline.min.js'];
     $.each(plugins, function(i,url){
-        var script = document.createElement("SCRIPT");
-        script.src = url;
-        script.type = 'text/javascript';
-        document.getElementsByTagName("head")[0].appendChild(script);
+        if (urls.endsWith('.js')) {
+            var script = document.createElement("SCRIPT");
+            script.src = url;
+            script.type = 'text/javascript';
+            document.getElementsByTagName("head")[0].appendChild(script);
+        } else  {
+            $('head').append('<link rel="stylesheet" type="text/css" href="'+url+'">');
+        }
     })
     handleSimpleCount();
     handleSimpleCountsSum();
