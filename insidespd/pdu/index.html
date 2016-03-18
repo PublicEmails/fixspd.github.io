@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>FixSPD</title>
+  <base target="_self">
+  <meta name="description" content="A admin dashboard theme that will get you started with Bootstrap 4." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" value="notranslate">
+  <link rel="shortcut icon" href="/img/codeply_ico.jpg">
+  
+
+  
+  <!--stylesheets / link tags loaded here-->
+
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+  
+
+  
+
+  <style type="text/css">body {
+  padding-top:62px;
+}
+
+body, html {
+  height:100%;
+}
+
+/* workaround modal-open padding issue */
+body.modal-open {
+    padding-right:0 !important;
+}
+
+/* workaround bs 4 horizontal scrollbar */
+.container-fluid >.row {
+    margin-left: -15px;
+    margin-right: -10px;
+}
+
+#sidebar {
+   padding-left:0;
+}
+
+/*
+ * Off Canvas at medium breakpoint
+ * --------------------------------------------------
+ */
+@media screen and (max-width: 48em) {
+
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+  }
+
+  .row-offcanvas-left
+  .sidebar-offcanvas {
+    left: -33%;
+  }
+
+  .row-offcanvas-left.active {
+    left: 33%;
+  }
+
+  .sidebar-offcanvas {
+    background-color:#f6f6f6;
+    position: absolute;
+    top: 0;
+    width: 33%;
+    height: 100%;
+  }
+}
+
+/*
+ * Off Canvas wider at sm breakpoint
+ * --------------------------------------------------
+ */
+@media screen and (max-width: 34em) {
+  .row-offcanvas-left
+  .sidebar-offcanvas {
+    left: -45%;
+  }
+
+  .row-offcanvas-left.active {
+    left: 45%;
+  }
+  
+  .sidebar-offcanvas {
+    width: 45%;
+  }
+}
+
+
+/* responsive nav stacked liked 3.x */
+@media(max-width:34em) {
+    .navbar .navbar-brand {
+        float:none;
+        display: block;
+    }
+    .navbar .navbar-nav>.nav-item {
+        float: none;
+        margin-left: .1rem;
+    }
+    .navbar .navbar-nav {
+        float:none !important;
+    }
+}
+
+.card {
+    overflow:hidden;
+}
+
+.card-block .rotate {
+    z-index: 8;
+    float: right;
+    height: 100%;
+}
+
+.card-block .rotate i {
+    color: rgba(20, 20, 20, 0.15);
+    position: absolute;
+    left: 0;
+    left: auto;
+    right: -10px;
+    bottom: 0;
+    display: block;
+    -webkit-transform: rotate(-44deg);
+    -moz-transform: rotate(-44deg);
+    -o-transform: rotate(-44deg);
+    -ms-transform: rotate(-44deg);
+    transform: rotate(-44deg);
+}
+.navbar-brand {
+padding-left:48px;
+background:url('logo.png') 0 7px no-repeat;
+}
+html, body {height: 100%}
+
+.sidebar{
+    background-color:#eee;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.small-box {
+  padding-left:10px;
+  width:200px;
+}
+.small-box h3 {
+  font-size:14px;
+  font-weight:bold;
+}
+</style>
+
+</head>
+<body >
+  <nav class="navbar navbar-fixed-top navbar-dark bg-primary">
+    <button class="navbar-toggler hidden-sm-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+        ☰
+    </button>
+    <a class="navbar-brand" href="#">FixSPD</a>
+    <div class="collapse navbar-toggleable-xs" id="collapsingNavbar">
+        <ul class="nav navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">About FixSPD</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">InsideSPD</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#features">Problem focuses</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#myAlert">Get involved</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container-fluid" id="main">
+    <div class="row row-offcanvas row-offcanvas-left">
+        
+        <!--/col-->
+
+        <div class="col-md-9 col-lg-10 main">
+          <h2>Public Disclosure Unit</h2>
+          <script src="https://fixspd.org/js/webmaster_toolkit_for_socrata.js"></script> to your webpage
+To add a count(*) add something similar to
+<p>In the old records system there are <span class="socrata_count" 
+data-url="https://data.seattle.gov/resource/a4j2-uu8v.json?$select=count(*)&$where=completed_date IS NULL"></span>
+open requests.</p>
+
+        </div>
+        <!--/main col-->
+    </div>
+
+</div>
+<!--/.container-->
+<footer class="container-fluid">
+    <p class="text-right small">©2015 Company</p>
+</footer>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Large Modal</h4>
+            </div>
+            <div class="modal-body">
+                This is a dashboard layout for Bootstrap 4. This is an example of the Modal component which you can use to show content. Any content can be placed inside the modal and it can use the Bootstrap grid classes.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary-outline" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+  
+  <script>
+    // sandbox disable popups
+    if (window.self !== window.top && window.name!="view1") {;
+      window.alert = function(){/*disable alert*/};
+      window.confirm = function(){/*disable confirm*/};
+      window.prompt = function(){/*disable prompt*/};
+      window.open = function(){/*disable open*/};
+    }
+    
+    // prevent href=# click jump
+    document.addEventListener("DOMContentLoaded", function() {
+      var links = document.getElementsByTagName("A");
+      for(var i=0; i < links.length; i++) {
+        if(links[i].href.indexOf('#')!=-1) {
+          links[i].addEventListener("click", function(e) {
+          console.debug("prevent href=# click");
+              if (this.hash) {
+                if (this.hash=="#") {
+                  e.preventDefault();
+                  return false;
+                }
+                else {
+    \\              /*
+                  var el = document.getElementById(this.hash.replace(/#/, ""));
+                  if (el) {
+                    el.scrollIntoView(true);
+                  }
+                  */
+                }
+              }
+              return false;
+          })
+        }
+      }
+    }, false);
+  </script>
+  
+  <!--scripts loaded here-->
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"></script>
+  
+  
+  
+  <script>
+  $(document).ready(function() {
+    
+  $('[data-toggle=offcanvas]').click(function() {
+    $('.row-offcanvas').toggleClass('active');
+  });
+  
+});
+  </script>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-75239819-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
