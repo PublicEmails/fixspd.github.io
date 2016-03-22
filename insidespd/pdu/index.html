@@ -196,8 +196,131 @@ data-urls="https://data.seattle.gov/resource/a4j2-uu8v.json?$select=count(*)&$wh
 data-url="https://data.seattle.gov/resource/a4j2-uu8v.json?$select=count(*)&$where=completed_date%20IS%20NULL"></span>
 in the old system and <span class="socrata_count" 
 data-url="https://data.seattle.gov/resource/ppwx-mtmh.json?$select=count(*)&$where=close_date%20IS%20NULL"></span> in the new system.</p>
-          <div><iframe width="500px" title="Number of records requests per day" height="425px" src="https://data.seattle.gov/w/wqr8-sdci/2myu-6xk5?cur=0NFyWzLXLZE&from=root" frameborder="0"scrolling="no"><a href="https://data.seattle.gov/Public-Safety/Number-of-records-requests-per-day/wqr8-sdci" title="Number of records requests per day" target="_blank">Number of records requests per day in the new system</a></iframe></div>
-        </div>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+<script   src="https://code.jquery.com/jquery-2.2.2.min.js"   integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="   crossorigin="anonymous"></script>
+<style>
+#chartjs-tooltip {
+     opacity: 0;
+     position: absolute;
+     background: rgba(0, 0, 0, .7);
+     color: white;
+     padding: 3px;
+     border-radius: 3px;
+     -webkit-transition: all .1s ease;
+     transition: all .1s ease;
+     pointer-events: none;
+     -webkit-transform: translate(-50%, 0);
+     transform: translate(-50%, 0);
+ }
+ .breakdown {
+ color:#FFF;
+ font-size:12px;
+ }
+</style>
+<!-- line chart canvas element --><h3>Number of records requests per day</h3>
+<canvas id="buyers" style="width:100%;height:400px;"></canvas>
+
+<div id="chartjs-tooltip"></div>
+<script>
+  var url = 'https://data.seattle.gov/resource/ppwx-mtmh.json?$select=date_trunc_ymd(create_date)%20as%20date,count(*)%20as%20count&$group=date_trunc_ymd(create_date)&$order=date_trunc_ymd(create_date)';
+  var data = JSON.parse($.ajax({
+            type: "GET",
+            url: url,
+            async: false
+        }).responseText);
+  var labels = [];
+  var counts = [];
+  $.each(data, function(i, v) {
+    labels.push(v['date']);
+    counts.push(parseInt(v['count']));
+  });
+	// line chart data
+	var buyerData = {
+		labels : labels,
+		datasets : [
+		{
+				fillColor : "rgba(172,194,132,0.4)",
+				strokeColor : "#ACC26D",
+				pointColor : "#fff",
+				pointStrokeColor : "#9DB86D",
+				data : counts,
+        pointHighlightFill: "blue",
+        pointHighlightStroke: "rgba(220,220,220,1)"
+        
+			}
+		]
+    
+	}
+	
+	// get line chart canvas
+	var buyers = document.getElementById('buyers').getContext('2d');
+
+	// draw line chart
+	new Chart(buyers).Line(buyerData,{pointHitDetectionRadius:5,customTooltips: function (tooltip) {
+        var tooltipEl = $('#chartjs-tooltip');
+
+        if (!tooltip) {
+            tooltipEl.css({
+                opacity: 0
+            });
+            return;
+        }
+       
+        tooltipEl.removeClass('above below');
+        tooltipEl.addClass(tooltip.yAlign);
+        console.log('hi');
+        // split out the label and value and make your own tooltip here
+        var parts = tooltip.text.split(":");
+        console.log(parts);
+        var url = 'https://data.seattle.gov/resource/ppwx-mtmh.json?$select=city_requestertype_internal as req,count(*) as count&$group=city_requestertype_internal&$where=date_trunc_ymd(create_date) = "'+parts[0]+':00:00"';
+        var data = JSON.parse($.ajax({
+            type: "GET",
+            url: url,
+            async: false
+        }).responseText);
+        dataBreakdowns = {}
+        $.each(data, function(i, v) {
+          dataBreakdowns[v['req']] = v['count'];
+        });
+        var innerHtml = '<span>'+parts[3]+' requests</span><table class="breakdown"><tr>';
+        breakdown_headers = ['Media', 'Attorney', 'Individual', 'Insurance', 'Public Agency', 'Other', 'Inmate', 'Unknown'];
+        breakdown_headers_html = '';
+        breakdown_counts_html = '';
+        $.each(breakdown_headers, function(i, v) {
+          breakdown_headers_html += '<td>'+v+'</td>';
+          if (v=='Unknown') {
+            var url = 'https://data.seattle.gov/resource/ppwx-mtmh.json?$select=count(*) as count&$where=city_requestertype_internal IS NULL AND date_trunc_ymd(create_date) = "'+parts[0]+':00:00"';
+            var data = JSON.parse($.ajax({
+                type: "GET",
+                url: url,
+                async: false
+            }).responseText);
+            try {
+              breakdown_counts_html += '<td>'+data[0]['count']+'</td>';
+            } catch (e) {
+              breakdown_counts_html += '<td>0</td>';
+            }
+          } else {
+            if (v in dataBreakdowns) {
+              breakdown_counts_html += '<td>'+dataBreakdowns[v]+'</td>';
+            } else {
+              breakdown_counts_html += '<td>0</td>';
+            }
+          }
+        });
+        innerHtml += breakdown_headers_html +'</tr><tr>'+breakdown_counts_html+'</tr></table>';
+        tooltipEl.html(innerHtml);
+
+        tooltipEl.css({
+            opacity: 1,
+            left: tooltip.chart.canvas.offsetLeft + tooltip.x + 'px',
+            top: tooltip.chart.canvas.offsetTop + tooltip.y + 'px',
+            fontFamily: tooltip.fontFamily,
+            fontSize: tooltip.fontSize,
+            fontStyle: tooltip.fontStyle,
+        });
+    }});
+</script>
         <!--/main col-->
     </div>
 
