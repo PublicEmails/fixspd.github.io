@@ -287,7 +287,7 @@ data-url="https://data.seattle.gov/resource/ppwx-mtmh.json?$select=count(*)&$whe
         $.each(data, function(i, v) {
           dataBreakdowns[v['req']] = v['count'];
         });
-        var innerHtml = '<span>'+parts[3]+' requests</span>Requester types<br/><table class="breakdown"><tr>';
+        var innerHtml = '<span>'+parts[3]+' requests</span><br/>Requester types<br/><table class="breakdown"><tr>';
         breakdown_headers = ['Media', 'Attorney', 'Individual', 'Insurance', 'Public Agency', 'Other', 'Inmate', 'Unknown'];
         breakdown_headers_html = '';
         breakdown_counts_html = '';
