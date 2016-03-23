@@ -315,6 +315,9 @@ data-url="https://data.seattle.gov/resource/ppwx-mtmh.json?$select=count(*)&$whe
           }
         });
         innerHtml += breakdown_headers_html +'</tr><tr>'+breakdown_counts_html+'</tr></table>';
+        innerHtml += 'Request statuses';
+        innerHtml += 'Request sources';
+        innerHtml += 'Receipt preference';
         tooltipEl.html(innerHtml);
 
         tooltipEl.css({
