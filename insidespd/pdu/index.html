@@ -287,12 +287,12 @@ data-url="https://data.seattle.gov/resource/ppwx-mtmh.json?$select=count(*)&$whe
         $.each(data, function(i, v) {
           dataBreakdowns[v['req']] = v['count'];
         });
-        var innerHtml = '<span>'+parts[3]+' requests</span><table class="breakdown"><tr>';
+        var innerHtml = '<span>'+parts[3]+' requests</span>Requester types<br/><table class="breakdown"><tr>';
         breakdown_headers = ['Media', 'Attorney', 'Individual', 'Insurance', 'Public Agency', 'Other', 'Inmate', 'Unknown'];
         breakdown_headers_html = '';
         breakdown_counts_html = '';
         $.each(breakdown_headers, function(i, v) {
-          breakdown_headers_html += '<td>'+v+'</td>';
+          breakdown_headers_html += '<th>'+v+'</th>';
           if (v=='Unknown') {
             var url = 'https://data.seattle.gov/resource/ppwx-mtmh.json?$select=count(*) as count&$where=city_requestertype_internal IS NULL AND date_trunc_ymd(create_date) = "'+parts[0]+':00:00"';
             var data = JSON.parse($.ajax({
