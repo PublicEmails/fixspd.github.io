@@ -302,15 +302,15 @@ data-url="https://data.seattle.gov/resource/ppwx-mtmh.json?$select=count(*)&$whe
                 async: false
             }).responseText);
             try {
-              breakdown_counts_html += '<td>'+data[0]['count']+'</td>';
+              breakdown_counts_html += '<td>('+data[0]['count']+')</td>';
             } catch (e) {
-              breakdown_counts_html += '<td>0</td>';
+              breakdown_counts_html += '<td>0% (0)</td>';
             }
           } else {
             if (v in dataBreakdowns) {
-              breakdown_counts_html += '<td>'+dataBreakdowns[v]+'</td>';
+              breakdown_counts_html += '<td>('+dataBreakdowns[v]+')</td>';
             } else {
-              breakdown_counts_html += '<td>0</td>';
+              breakdown_counts_html += '<td>0% (0)</td>';
             }
           }
         });
