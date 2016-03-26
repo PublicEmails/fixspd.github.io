@@ -75,7 +75,8 @@ function pieChart(item) {
         async: false
     }).responseText);
     console.log(JSON.stringify(data));
-    var ctx = item.get(0).getContext("2d");
+    item.append('<h3>'+item.attr('data-heading')+'</h3><canvas></canvas>')
+    var ctx = item.find('canvas').get(0).getContext("2d");
     chartData = [];
     $.each(data, function(i,v) {
         r = Math.floor(Math.random() * 200);
