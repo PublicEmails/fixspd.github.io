@@ -55,22 +55,27 @@ function main() {
     handleSimpleCount();
     handleSimpleCountsSum();
     $('body').on('mouseenter', '.info', function (e) {
-        console.log('.info hover');
         var url = $(this).parent().attr('data-url');
-        $('<div></div>').dialog({
-            modal: true,
-            title: "Info about data",
-            open: function () {
-                var markup = '<a href="'+url+'">'+url+'</a>';
-                $(this).html(markup);
-            },
-            buttons: {
-                Ok: function () {
-                    $(this).dialog("close");
-                }
-            }
-        }); //end confirm dialog
+        $('body').append('<div id="popup></div>');
+        $('#popup').html('<a href="'+url+'">'+url+'</a>');
+        $("#popup").dialog({ //create dialog, but keep it closed
+            autoOpen: false,
+            width: 'auto',
+            height: 'auto'
+        });
+        $("#popup").dialog("option", {
+            position: [e.pageX - 5, e.pageY - 5]
+        });
+        $(".ui-dialog-titlebar").hide();
+        $("#popup").dialog("open");
+    }).on('mouseleave', '.info', function (e) {
+
+        $("#popup").bind('mouseleave', function () {
+            $("#popup").dialog('close');
+        });
+        $('#popup').remove();
     });
+    
 
 
 }
