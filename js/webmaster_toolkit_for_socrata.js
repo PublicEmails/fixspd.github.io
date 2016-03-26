@@ -55,10 +55,11 @@ function main() {
     handleSimpleCount();
     handleSimpleCountsSum();
     $('body').append('<div id="popup"></div>');
+    $('#popup').css({'position': 'absolute'});
     setTimeout(function(){$("#popup").dialog({ //create dialog, but keep it closed
         autoOpen: false,
-        width: '200px',
-        height: '100px',
+        width: 'auto',
+        height: 'auto',
         position: {
             my: "left top",
             at: "left top",
