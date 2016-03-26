@@ -9,7 +9,7 @@ if (typeof console == "undefined") {
 }
 
 function updateItemWithSimpleCount(item, data) {
-  item.html(data[0][Object.keys(data[0])[0]]+'<i class="fa fa-info-circle"></i>');
+  item.html(data[0][Object.keys(data[0])[0]]+'<i class="fa fa-info-circle info"></i>');
 }
 
 function handleSimpleCount() {
