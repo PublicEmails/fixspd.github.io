@@ -56,8 +56,9 @@ function main() {
             $('head').append('<link rel="stylesheet" type="text/css" href="'+url+'">');
         }
     })
-    handleSimpleCount();
-    handleSimpleCountsSum();
+    setTimeout(function(){handleSimpleCount();
+    handleSimpleCountsSum();},1000)
+    
     
     
 
