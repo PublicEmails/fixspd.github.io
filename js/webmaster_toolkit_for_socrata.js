@@ -55,7 +55,7 @@ function main() {
     handleSimpleCount();
     handleSimpleCountsSum();
     $('body').append('<div id="popup"></div>');
-    $('#popup').css({'position': 'absolute'});
+    
     setTimeout(function(){$("#popup").dialog({ //create dialog, but keep it closed
         autoOpen: false,
         width: 'auto',
@@ -73,10 +73,10 @@ function main() {
         $('#popup').html('<a href="'+url+'">'+url+'</a>');
         var pos = $(this).offset();
         console.log(pos);
-        $("#popup").dialog("option", {
-            position: [pos['left'] - 5, pos['top'] - 5]
-        });
-        $(".ui-dialog-titlebar").hide();
+        //$("#popup").dialog("option", {
+        //    position: [pos['left'] - 5, pos['top'] - 5]
+        //});
+        $('#popup').css({'position': 'absolute', 'left': pos['left'], 'top': pos['top']});
         $("#popup").dialog("open");
     }).on('mouseleave', '.info', function (e) {
 
