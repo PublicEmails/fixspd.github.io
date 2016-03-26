@@ -54,15 +54,17 @@ function main() {
     })
     handleSimpleCount();
     handleSimpleCountsSum();
+    $('body').append('<div id="popup"></div>');
+    $("#popup").dialog({ //create dialog, but keep it closed
+        autoOpen: false,
+        width: 'auto',
+        height: 'auto'
+    });
     $('body').on('mouseenter', '.info', function (e) {
         var url = $(this).parent().attr('data-url');
-        $('body').append('<div id="popup"></div>');
+        
         $('#popup').html('<a href="'+url+'">'+url+'</a>');
-        $("#popup").dialog({ //create dialog, but keep it closed
-            autoOpen: false,
-            width: 'auto',
-            height: 'auto'
-        });
+        
         $("#popup").dialog("option", {
             position: [e.pageX - 5, e.pageY - 5]
         });
@@ -73,7 +75,6 @@ function main() {
         $("#popup").bind('mouseleave', function () {
             $("#popup").dialog('close');
         });
-        $('#popup').remove();
     });
     
 
