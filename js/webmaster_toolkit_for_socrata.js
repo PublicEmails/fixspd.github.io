@@ -56,17 +56,6 @@ function main() {
     handleSimpleCountsSum();
     $('body').append('<div id="popup"></div>');
     
-    setTimeout(function(){$("#popup").dialog({ //create dialog, but keep it closed
-        autoOpen: false,
-        width: 'auto',
-        height: 'auto',
-        position: {
-            my: "left top",
-            at: "left top",
-            of: ".info",
-            collision: "flip"
-        }
-    })},500);
     $('body').on('mouseenter', '.info', function (e) {
         var url = $(this).parent().attr('data-url');
         
@@ -76,12 +65,12 @@ function main() {
         //$("#popup").dialog("option", {
         //    position: [pos['left'] - 5, pos['top'] - 5]
         //});
-        $('#popup').css({'position': 'absolute', 'left': pos['left'], 'top': pos['top']});
-        $("#popup").dialog("open");
+        $('#popup').css({'width': '300px', 'height': '200px', 'position': 'absolute', 'left': pos['left'], 'top': pos['top']});
+        $("#popup").show();
     }).on('mouseleave', '.info', function (e) {
 
         $("#popup").bind('mouseleave', function () {
-            $("#popup").dialog('close');
+            $("#popup").hide();
         });
     });
     
