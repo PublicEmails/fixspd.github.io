@@ -68,13 +68,46 @@ function pieChart(item) {
         async: false
     }).responseText);
     var total = data[0]['count'];
-    url = 'https://'+item.attr('data-domain')+'/resource/'+item.attr('data-datasetid')+'.json?$select='+item.attr('data-column')+' as column,count(*) as count,count(*)/'+total+'&$group='+item.attr('data-column');
+    url = 'https://'+item.attr('data-domain')+'/resource/'+item.attr('data-datasetid')+'.json?$select='+item.attr('data-column')+' as column,count(*) as count,count(*)/'+total+' as percentage&$group='+item.attr('data-column');
     var data = JSON.parse($.ajax({
         type: "GET",
         url: url,
         async: false
     }).responseText);
     console.log(JSON.stringify(data));
+    var ctx = $(this).get(0).getContext("2d");
+
+    var data = [
+      //   { value: 300, color:"#F7464A", highlight: "#FF5A5E", label: "sample" },
+    ] ;
+    
+    // data is empty. 
+    // we'll thow in between 10 and 50 items randomly generated
+    
+    entries = 10 + Math.floor(Math.random() * 40);
+    
+    for (i = 0; i < entries; i++) {
+        r = Math.floor(Math.random() * 200);
+        g = Math.floor(Math.random() * 200);
+        b = Math.floor(Math.random() * 200);
+        v = Math.floor(Math.random() * 500);
+        c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
+        h = 'rgb(' + (r+20) + ', ' + (g+20) + ', ' + (b+20) + ')';
+        data.push( {
+          value : v,
+          label : 'item ' + i,
+          color: c,
+          highlight: h
+        }) ;
+    };
+    var options = { } ;
+    
+    if ( entries % 2 ) {
+    var myChart = new Chart(ctx).Pie(data,options);
+    }
+    else {
+    var myChart = new Chart(ctx).Doughnut(data,options);
+    }
 }
 function handleSODAPlayground() {
   $.each($('.sodaplayground'), function(item) {
