@@ -62,7 +62,7 @@ function main() {
         position: {
             my: "left top",
             at: "left top",
-            of: window,
+            of: ".info",
             collision: "none"
         }
     })},500);
