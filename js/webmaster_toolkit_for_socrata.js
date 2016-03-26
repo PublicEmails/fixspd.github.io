@@ -92,13 +92,8 @@ function pieChart(item) {
         }) ;
     });
     var options = { } ;
-    
-    if ( entries % 2 ) {
     var myChart = new Chart(ctx).Pie(data,options);
-    }
-    else {
-    var myChart = new Chart(ctx).Doughnut(data,options);
-    }
+    
 }
 function handleSODAPlayground() {
   $.each($('.sodaplayground'), function(item) {
