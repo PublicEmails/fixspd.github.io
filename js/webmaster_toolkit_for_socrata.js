@@ -76,7 +76,7 @@ function pieChart(item) {
     }).responseText);
     console.log(JSON.stringify(data));
     var ctx = item.get(0).getContext("2d");
-
+    chartData = [];
     $.each(data, function(i,v) {
         r = Math.floor(Math.random() * 200);
         g = Math.floor(Math.random() * 200);
@@ -84,7 +84,7 @@ function pieChart(item) {
         v = Math.floor(Math.random() * 500);
         c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
         h = 'rgb(' + (r+20) + ', ' + (g+20) + ', ' + (b+20) + ')';
-        data.push( {
+        chartData.push( {
           value : parseInt(v['count']),
           label : v['column'],
           color: c,
@@ -92,7 +92,7 @@ function pieChart(item) {
         }) ;
     });
     var options = { } ;
-    var myChart = new Chart(ctx).Pie(data,options);
+    var myChart = new Chart(ctx).Pie(chartData,options);
     
 }
 function handleSODAPlayground() {
