@@ -65,6 +65,7 @@ function main() {
         
         $('#popup').html('<a href="'+url+'">'+url+'</a>');
         var pos = $(this).offset();
+        console.log(pos);
         $("#popup").dialog("option", {
             position: [pos['left'] - 5, pos['top'] - 5]
         });
