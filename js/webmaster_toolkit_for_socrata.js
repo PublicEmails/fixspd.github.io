@@ -56,13 +56,6 @@ function main() {
     handleSimpleCountsSum();
     $('body').append('<div id="popup">Test</div>')
     $('body').on('hover', '.info', function (e) {
-        $("#popup").dialog("option", {
-            position: [e.pageX - 5, e.pageY - 5]
-        });
-        $(".ui-dialog-titlebar").hide();
-        $("#popup").dialog("open");
-    }, function (e) {
-
         $('<div></div>').dialog({
             modal: true,
             title: "Confirmation",
