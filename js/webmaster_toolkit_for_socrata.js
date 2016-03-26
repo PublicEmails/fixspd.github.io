@@ -75,7 +75,7 @@ function pieChart(item) {
         async: false
     }).responseText);
     console.log(JSON.stringify(data));
-    item.append('<h3>'+item.attr('data-heading')+'</h3><canvas></canvas><div class="chart-legend"></div>')
+    item.append('<h3>'+item.attr('data-heading')+'</h3><canvas></canvas><div class="chart-legend small"></div>')
     var ctx = item.find('canvas').get(0).getContext("2d");
     chartData = [];
     $.each(data, function(i,v) {
