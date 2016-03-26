@@ -54,8 +54,7 @@ function main() {
     })
     handleSimpleCount();
     handleSimpleCountsSum();
-    $('body').append('<div id="popup">Test</div>')
-    $('body').on('hover', '.info', function (e) {
+    $('body').on('mouseenter', '.info', function (e) {
         console.log('.info hover');
         $('<div></div>').dialog({
             modal: true,
