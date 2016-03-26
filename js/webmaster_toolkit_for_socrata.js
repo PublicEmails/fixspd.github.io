@@ -9,7 +9,10 @@ if (typeof console == "undefined") {
 }
 
 function updateItemWithSimpleCount(item, data) {
-  item.html(data[0][Object.keys(data[0])[0]]+'<i class="fa fa-info-circle info"></i>');
+  var url = $(this).parent().attr('data-url');    
+  item.html(data[0][Object.keys(data[0])[0]]+'<i class="fa fa-info-circle info" rel="tooltip" data-original-title="<a href="'+url+'">'+url+'</a>"></i>');
+  $("[rel=tooltip]").tooltip({html:true});
+    
 }
 
 function handleSimpleCount() {
@@ -21,6 +24,7 @@ function handleSimpleCount() {
       updateItemWithSimpleCount(item, data);
     });
   });
+  
 }
 
 function handleSimpleCountsSum() {
@@ -54,21 +58,7 @@ function main() {
     })
     handleSimpleCount();
     handleSimpleCountsSum();
-    $('body').append('<div id="popup"></div>');
     
-    $('body').on('mouseenter', '.info', function (e) {
-        var url = $(this).parent().attr('data-url');
-        
-        $('#popup').html('<a href="'+url+'">'+url+'</a>');
-        var pos = $(this).offset();
-        $('#popup').css({'background':'#000', 'color': '#FFF','font-size': '10px', 'width': '300px', 'height': '200px', 'position': 'absolute', 'left': pos['left'], 'top': pos['top']});
-        $("#popup").show();
-    }).on('mouseleave', '.info', function (e) {
-
-        $("#popup").bind('mouseleave', function () {
-            $("#popup").hide();
-        });
-    });
     
 
 
