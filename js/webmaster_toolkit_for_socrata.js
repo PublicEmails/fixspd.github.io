@@ -78,9 +78,9 @@ function pieChart(item) {
 }
 function handleSODAPlayground() {
   $.each($('.sodaplayground'), function(item) {
-    switch (item.attr('data-type')) {
+    switch ($(this).attr('data-type')) {
         case "pie_chart":
-            pieChart(item);
+            pieChart($(this));
             break;
     }  
   }); 
