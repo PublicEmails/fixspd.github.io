@@ -58,9 +58,9 @@ function main() {
         console.log('.info hover');
         $('<div></div>').dialog({
             modal: true,
-            title: "Confirmation",
+            title: "Info about data",
             open: function () {
-                var markup = 'Hello World';
+                var markup = '<a href="'+$(this).parent().attr('data-url')+'">'+$(this).parent().attr('data-url')+'</a>';
                 $(this).html(markup);
             },
             buttons: {
