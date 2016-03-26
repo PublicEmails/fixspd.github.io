@@ -11,8 +11,24 @@ if (typeof console == "undefined") {
 function updateItemWithSimpleCount(item, data) {
   var url = item.attr('data-url');    
   item.html(data[0][Object.keys(data[0])[0]]+'<i class="fa fa-info-circle info" data-toggle="popover" data-placement="bottom" title=\'<a href="'+url+'">'+url+'</a>\'></i>');
-  $('[data-toggle="popover"]').popover({html:true, trigger:'hover'});
-    
+  $('[data-toggle="popover"]').popover({
+  trigger: "manual",html:true
+}).on("click", function(e) {
+  e.preventDefault();
+}).on("mouseenter", function() {
+  var _this = this;
+  $(this).popover("show");
+  $(this).siblings(".popover").on("mouseleave", function() {
+    $(_this).popover('hide');
+  });
+}).on("mouseleave", function() {
+  var _this = this;
+  setTimeout(function() {
+    if (!$(".popover:hover").length) {
+      $(_this).popover("hide")
+    }
+  }, 100);
+});    
 }
 
 function handleSimpleCount() {
