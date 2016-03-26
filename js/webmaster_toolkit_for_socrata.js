@@ -85,7 +85,7 @@ function pieChart(item) {
         c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
         h = 'rgb(' + (r+20) + ', ' + (g+20) + ', ' + (b+20) + ')';
         data.push( {
-          value : v['count'],
+          value : parseInt(v['count']),
           label : v['column'],
           color: c,
           highlight: h
