@@ -59,14 +59,14 @@ function main() {
         autoOpen: false,
         width: 'auto',
         height: 'auto'
-    })},2000);
+    })},500);
     $('body').on('mouseenter', '.info', function (e) {
         var url = $(this).parent().attr('data-url');
         
         $('#popup').html('<a href="'+url+'">'+url+'</a>');
         
         $("#popup").dialog("option", {
-            position: [e.pageX - 5, e.pageY - 5]
+            position: [e.parent().pageX - 5, e.parent().pageY - 5]
         });
         $(".ui-dialog-titlebar").hide();
         $("#popup").dialog("open");
