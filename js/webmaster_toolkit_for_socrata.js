@@ -57,8 +57,8 @@ function main() {
     $('body').append('<div id="popup"></div>');
     setTimeout(function(){$("#popup").dialog({ //create dialog, but keep it closed
         autoOpen: false,
-        width: 'auto',
-        height: 'auto',
+        width: '200px',
+        height: '100px',
         position: {
             my: "left top",
             at: "left top",
