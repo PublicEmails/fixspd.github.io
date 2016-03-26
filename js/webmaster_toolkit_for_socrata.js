@@ -11,7 +11,7 @@ if (typeof console == "undefined") {
 function updateItemWithSimpleCount(item, data) {
   var url = item.attr('data-url');    
   item.html(data[0][Object.keys(data[0])[0]]+'<i class="fa fa-info-circle info" data-toggle="popover" data-placement="bottom" title=\'<a href="'+url+'">'+url+'</a>\'></i>');
-  $('[data-toggle="popover"]').popover({html:true});
+  $('[data-toggle="popover"]').popover({html:true, trigger:'hover'});
     
 }
 
