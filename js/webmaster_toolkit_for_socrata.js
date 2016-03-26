@@ -82,7 +82,7 @@ function handleSODAPlayground() {
         case "pie_chart":
             pieChart($(this));
             break;
-    }  
+    }   
   }); 
 }
 function main() {
