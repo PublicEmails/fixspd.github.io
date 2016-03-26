@@ -63,16 +63,21 @@ function main() {
         $("#popup").dialog("open");
     }, function (e) {
 
-        $("#popup").bind('mouseleave', function () {
-            $("#popup").dialog('close');
-        });
+        $('<div></div>').dialog({
+            modal: true,
+            title: "Confirmation",
+            open: function () {
+                var markup = 'Hello World';
+                $(this).html(markup);
+            },
+            buttons: {
+                Ok: function () {
+                    $(this).dialog("close");
+                }
+            }
+        }); //end confirm dialog
     });
 
-    $("#popup").dialog({ //create dialog, but keep it closed
-        autoOpen: false,
-        width: 'auto',
-        height: 'auto'
-    });
 
 }
 
