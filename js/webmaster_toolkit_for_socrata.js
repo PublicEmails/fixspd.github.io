@@ -81,7 +81,6 @@ function pieChart(item) {
         r = Math.floor(Math.random() * 200);
         g = Math.floor(Math.random() * 200);
         b = Math.floor(Math.random() * 200);
-        v = Math.floor(Math.random() * 500);
         c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
         h = 'rgb(' + (r+20) + ', ' + (g+20) + ', ' + (b+20) + ')';
         chartData.push( {
