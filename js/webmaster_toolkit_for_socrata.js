@@ -45,7 +45,7 @@ function handleSimpleCountsSum() {
   });
 }
 function main() {
-    var plugins = ['https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/umd/tooltip.js'];
+    var plugins = ['https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'];
     $.each(plugins, function(i,url){
         if (url.endsWith('.js')) {
             var script = document.createElement("SCRIPT");
