@@ -37,7 +37,7 @@ function handleSimpleCountsSum() {
         }).responseText);
         total += parseInt(data[0][Object.keys(data[0])[0]]);
     });
-    item.html(total+'<i class="fa fa-info-circle"></i>');
+    item.html(total+'<i class="fa fa-info-circle info"></i>');
   });
 }
 function main() {
@@ -54,6 +54,26 @@ function main() {
     })
     handleSimpleCount();
     handleSimpleCountsSum();
+    $('body').append('<div id="popup">Test</div>')
+    $('body').on('hover', '.info', function (e) {
+        $("#popup").dialog("option", {
+            position: [e.pageX - 5, e.pageY - 5]
+        });
+        $(".ui-dialog-titlebar").hide();
+        $("#popup").dialog("open");
+    }, function (e) {
+
+        $("#popup").bind('mouseleave', function () {
+            $("#popup").dialog('close');
+        });
+    });
+
+    $("#popup").dialog({ //create dialog, but keep it closed
+        autoOpen: false,
+        width: 'auto',
+        height: 'auto'
+    });
+
 }
 
 if (!window.jQuery) {
