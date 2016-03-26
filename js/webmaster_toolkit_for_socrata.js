@@ -46,7 +46,7 @@ function handleSimpleCountsSum() {
 }
 function main() {
     var plugins = ['https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'];
-    var originalLeave = $.fn.popover.Constructor.prototype.leave;
+    setTimeout(function(){var originalLeave = $.fn.popover.Constructor.prototype.leave;
 $.fn.popover.Constructor.prototype.leave = function(obj){
   var self = obj instanceof this.constructor ?
     obj : $(obj.currentTarget)[this.type](this.getDelegateOptions()).data('bs.' + this.type)
@@ -66,7 +66,7 @@ $.fn.popover.Constructor.prototype.leave = function(obj){
       });
     })
   }
-};
+};}, 1000);
     $.each(plugins, function(i,url){
         if (url.endsWith('.js')) {
             var script = document.createElement("SCRIPT");
