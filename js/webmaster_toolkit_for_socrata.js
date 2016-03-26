@@ -64,9 +64,9 @@ function main() {
         var url = $(this).parent().attr('data-url');
         
         $('#popup').html('<a href="'+url+'">'+url+'</a>');
-        
+        var pos = $(this).offset();
         $("#popup").dialog("option", {
-            position: [e.parent().pageX - 5, e.parent().pageY - 5]
+            position: [pos['left'] - 5, pos['top'] - 5]
         });
         $(".ui-dialog-titlebar").hide();
         $("#popup").dialog("open");
