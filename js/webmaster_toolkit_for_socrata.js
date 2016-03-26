@@ -56,11 +56,12 @@ function main() {
     handleSimpleCountsSum();
     $('body').on('mouseenter', '.info', function (e) {
         console.log('.info hover');
+        var url = $(this).parent().attr('data-url');
         $('<div></div>').dialog({
             modal: true,
             title: "Info about data",
             open: function () {
-                var markup = '<a href="'+$(this).parent().attr('data-url')+'">'+$(this).parent().attr('data-url')+'</a>';
+                var markup = '<a href="'+url+'">'+url+'</a>';
                 $(this).html(markup);
             },
             buttons: {
