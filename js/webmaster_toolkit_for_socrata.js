@@ -75,7 +75,7 @@ function pieChart(item) {
         async: false
     }).responseText);
     console.log(JSON.stringify(data));
-    item.append('<h3>'+item.attr('data-heading')+'</h3><canvas></canvas><div class="legend"></div>')
+    item.append('<h3>'+item.attr('data-heading')+'</h3><canvas></canvas><div class="chart-legend"></div>')
     var ctx = item.find('canvas').get(0).getContext("2d");
     chartData = [];
     $.each(data, function(i,v) {
@@ -94,7 +94,7 @@ function pieChart(item) {
     var options = { } ;
     console.log(JSON.stringify(chartData))
     var myChart = new Chart(ctx).Pie(chartData,options);
-    item.find('.legend').html(myChart.generateLegend());
+    item.find('.chart-legend').html(myChart.generateLegend());
 }
 function handleSODAPlayground() {
   $.each($('.sodaplayground'), function(item) {
