@@ -63,7 +63,7 @@ function main() {
             my: "left top",
             at: "left top",
             of: ".info",
-            collision: "none"
+            collision: "flip"
         }
     })},500);
     $('body').on('mouseenter', '.info', function (e) {
