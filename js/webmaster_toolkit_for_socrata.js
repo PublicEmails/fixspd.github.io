@@ -9,7 +9,7 @@ if (typeof console == "undefined") {
 }
 
 function updateItemWithSimpleCount(item, data) {
-  item.text(data[0][Object.keys(data[0])[0]]);
+  item.html(data[0][Object.keys(data[0])[0]]+'<i class="fa fa-info-circle"></i>');
 }
 
 function handleSimpleCount() {
@@ -37,11 +37,11 @@ function handleSimpleCountsSum() {
         }).responseText);
         total += parseInt(data[0][Object.keys(data[0])[0]]);
     });
-    item.text(total);
+    item.html(total+'<i class="fa fa-info-circle"></i>');
   });
 }
 function main() {
-    var plugins = ['https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/excanvas.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/jquery.jqplot.min.css', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/jquery.jqplot.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.BezierCurveRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.barRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.blockRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.bubbleRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.canvasAxisLabelRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.canvasAxisTickRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.canvasOverlay.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.canvasTextRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.categoryAxisRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.ciParser.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.cursor.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.dateAxisRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.donutRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.dragable.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.enhancedLegendRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.funnelRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.highlighter.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.json2.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.logAxisRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.mekkoAxisRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.mekkoRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.meterGaugeRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.mobile.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.ohlcRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.pieRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.pointLabels.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.pyramidAxisRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.pyramidGridRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.pyramidRenderer.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.trendline.min.js'];
+    var plugins = ['https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'];
     $.each(plugins, function(i,url){
         if (url.endsWith('.js')) {
             var script = document.createElement("SCRIPT");
