@@ -10,7 +10,7 @@ if (typeof console == "undefined") {
 
 function updateItemWithSimpleCount(item, data) {
   var url = item.attr('data-url');    
-  item.html(data[0][Object.keys(data[0])[0]]+'<i class="fa fa-info-circle info" rel="tooltip" data-original-title=\'<a href="'+url+'">'+url+'</a>\'></i>');
+  item.html(data[0][Object.keys(data[0])[0]]+'<i class="fa fa-info-circle info" data-toggle="tooltip" data-placement="top" rel="tooltip" data-original-title=\'<a href="'+url+'">'+url+'</a>\'></i>');
   $("[rel=tooltip]").tooltip({html:true});
     
 }
