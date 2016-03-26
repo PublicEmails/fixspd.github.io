@@ -55,11 +55,11 @@ function main() {
     handleSimpleCount();
     handleSimpleCountsSum();
     $('body').append('<div id="popup"></div>');
-    $("#popup").dialog({ //create dialog, but keep it closed
+    setTimeout(function(){$("#popup").dialog({ //create dialog, but keep it closed
         autoOpen: false,
         width: 'auto',
         height: 'auto'
-    });
+    })},2000);
     $('body').on('mouseenter', '.info', function (e) {
         var url = $(this).parent().attr('data-url');
         
