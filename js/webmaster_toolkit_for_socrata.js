@@ -74,7 +74,7 @@ function pieChart(item) {
         url: url,
         async: false
     }).responseText);
-    console.log(JSON.stringify(data));
+    //console.log(JSON.stringify(data));
     var ctx = item.get(0).getContext("2d");
     chartData = [];
     $.each(data, function(i,v) {
@@ -92,6 +92,7 @@ function pieChart(item) {
         }) ;
     });
     var options = { } ;
+    console.log(JSON.stringify(chartData))
     var myChart = new Chart(ctx).Pie(chartData,options);
     
 }
