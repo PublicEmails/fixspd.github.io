@@ -56,7 +56,7 @@ function main() {
     handleSimpleCountsSum();
     $('body').on('mouseenter', '.info', function (e) {
         var url = $(this).parent().attr('data-url');
-        $('body').append('<div id="popup></div>');
+        $('body').append('<div id="popup"></div>');
         $('#popup').html('<a href="'+url+'">'+url+'</a>');
         $("#popup").dialog({ //create dialog, but keep it closed
             autoOpen: false,
