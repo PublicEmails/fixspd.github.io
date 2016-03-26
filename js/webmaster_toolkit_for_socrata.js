@@ -60,8 +60,33 @@ function handleSimpleCountsSum() {
     item.html(total+'<i class="fa fa-info-circle info"></i>');
   });
 }
+function pieChart(item) {
+    url = 'https://'+item.attr('data-domain')+'/resource/'+item.attr('data-datasetid')+'.json?$select=count(*) as count';
+    var data = JSON.parse($.ajax({
+        type: "GET",
+        url: url,
+        async: false
+    }).responseText);
+    var total = data[0]['count'];
+    url = 'https://'+item.attr('data-domain')+'/resource/'+item.attr('data-datasetid')+'.json?$select='+item.attr('data-column')+' as column,count(*) as count,count(*)/'+total+'&$group='+item.attr('data-column');
+    var data = JSON.parse($.ajax({
+        type: "GET",
+        url: url,
+        async: false
+    }).responseText);
+    console.log(JSON.stringify(data));
+}
+function handleSODAPlayground() {
+  $.each($('.sodaplayground'), function(item) {
+    switch (item.attr('data-type')) {
+        case "pie_chart":
+            pieChart(item);
+            break;
+    }  
+  }); 
+}
 function main() {
-    var plugins = ['https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js'];
+    var plugins = ['https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'];
     setTimeout(function(){var originalLeave = $.fn.popover.Constructor.prototype.leave;
 $.fn.popover.Constructor.prototype.leave = function(obj){
   var self = obj instanceof this.constructor ?
@@ -94,7 +119,7 @@ $.fn.popover.Constructor.prototype.leave = function(obj){
         }
     })
     setTimeout(function(){handleSimpleCount();
-    handleSimpleCountsSum();},1000)
+    handleSimpleCountsSum();handleSODAPlayground();},1000)
     
     
     
