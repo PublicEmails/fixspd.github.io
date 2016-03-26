@@ -75,7 +75,7 @@ function pieChart(item) {
         async: false
     }).responseText);
     console.log(JSON.stringify(data));
-    var ctx = $(this).get(0).getContext("2d");
+    var ctx = item.get(0).getContext("2d");
 
     var data = [
       //   { value: 300, color:"#F7464A", highlight: "#FF5A5E", label: "sample" },
