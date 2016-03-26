@@ -58,7 +58,13 @@ function main() {
     setTimeout(function(){$("#popup").dialog({ //create dialog, but keep it closed
         autoOpen: false,
         width: 'auto',
-        height: 'auto'
+        height: 'auto',
+        position: {
+            my: "left top",
+            at: "left top",
+            of: window,
+            collision: "none"
+        }
     })},500);
     $('body').on('mouseenter', '.info', function (e) {
         var url = $(this).parent().attr('data-url');
