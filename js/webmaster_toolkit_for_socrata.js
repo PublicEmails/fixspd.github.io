@@ -77,16 +77,7 @@ function pieChart(item) {
     console.log(JSON.stringify(data));
     var ctx = item.get(0).getContext("2d");
 
-    var data = [
-      //   { value: 300, color:"#F7464A", highlight: "#FF5A5E", label: "sample" },
-    ] ;
-    
-    // data is empty. 
-    // we'll thow in between 10 and 50 items randomly generated
-    
-    entries = 10 + Math.floor(Math.random() * 40);
-    
-    for (i = 0; i < entries; i++) {
+    $.each(data, function(i,v) {
         r = Math.floor(Math.random() * 200);
         g = Math.floor(Math.random() * 200);
         b = Math.floor(Math.random() * 200);
@@ -94,12 +85,12 @@ function pieChart(item) {
         c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
         h = 'rgb(' + (r+20) + ', ' + (g+20) + ', ' + (b+20) + ')';
         data.push( {
-          value : v,
-          label : 'item ' + i,
+          value : v['count'],
+          label : v['column'],
           color: c,
           highlight: h
         }) ;
-    };
+    });
     var options = { } ;
     
     if ( entries % 2 ) {
