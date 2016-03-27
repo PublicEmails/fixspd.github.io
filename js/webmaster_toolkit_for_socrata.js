@@ -88,7 +88,16 @@ function pieChart(item) {
           highlight: window.highlightColors[i]
         }) ;
     });
-    var options = { } ;
+    var options = { legendTemplate : '<ul>'
+                  +'<% for (var i=0; i<datasets.length; i++) { %>'
+                    +'<li>'
+                    +'<span style=\"background-color:<%=datasets[i].lineColor%>\"></span>'
+                    +'<% if (datasets[i].label) { %><%= datasets[i].label %><% } %>'
+                    +'<% if (datasets[i].value) { %><%= datasets[i].value %><% } %>'
+                  +'</li>'
+                +'<% } %>'
+              +'</ul>'
+  } ;
     console.log(JSON.stringify(chartData))
     var myChart = new Chart(ctx).Pie(chartData,options);
     item.find('.chart-legend').html(myChart.generateLegend());
