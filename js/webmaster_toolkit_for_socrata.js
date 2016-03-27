@@ -114,7 +114,7 @@ function table_of_boolean_percentages(item) {
     }).responseText);
     var total = parseInt(data[0]['count']);
     var html = '<table>';
-    $.each(item.attr('data-columns').spilt(','), function(i, v){
+    $.each(item.attr('data-columns').split(','), function(i, v){
         url = 'https://'+item.attr('data-domain')+'/resource/'+item.attr('data-datasetid')+'.json?$select=count(*) as count&'+v+'='+item.attr('data-trueis');
         var data = JSON.parse($.ajax({
             type: "GET",
