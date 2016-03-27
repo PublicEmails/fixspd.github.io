@@ -83,17 +83,20 @@ function pieChart(item) {
         
         chartData.push( {
           value : parseInt(v['count']),
+          percentage : v['percentage'],
           label : v['column'],
           color: window.colors[i],
           highlight: window.highlightColors[i]
         }) ;
     });
     var options = { legendTemplate : '<ul>'
-                  +'<% for (var i=0; i<datasets.length; i++) { %>'
+                  +'<% for (var i=0; i<chartData.length; i++) { %>'
                     +'<li>'
-                    +'<span style=\"background-color:<%=datasets[i].lineColor%>\"></span>'
-                    +'<% if (datasets[i].label) { %><%= datasets[i].label %><% } %>'
-                    +'<% if (datasets[i].value) { %><%= datasets[i].value %><% } %>'
+                    +'<span style=\"background-color:<%=chartData[i].color%>\"></span>'
+                    +'<% if (chartData[i].label) { %><%= chartData[i].label %><% } %>'
+                    +'<% if (chartData[i].percentage) { %><%= chartData[i].percentage %>%<% } %>'
+                    +'<% if (chartData[i].value) { %> (<%= chartData[i].value %>)<% } %>'
+                    
                   +'</li>'
                 +'<% } %>'
               +'</ul>'
