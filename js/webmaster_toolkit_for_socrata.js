@@ -68,7 +68,7 @@ function pieChart(item) {
         async: false
     }).responseText);
     var total = data[0]['count'];
-    url = 'https://'+item.attr('data-domain')+'/resource/'+item.attr('data-datasetid')+'.json?$select=CASE('+item.attr('data-column')+' IS NULL,Unknown,'+item.attr('data-column')+' IS NOT NULL,'+item.attr('data-column')+') as column,count(*) as count,count(*)/'+total+'*100 as percentage&$group='+item.attr('data-column')+'&$order=percentage DESC';
+    url = 'https://'+item.attr('data-domain')+'/resource/'+item.attr('data-datasetid')+'.json?$select=CASE('+item.attr('data-column')+' IS NULL,%27Unknown%27,'+item.attr('data-column')+' IS NOT NULL,'+item.attr('data-column')+') as column,count(*) as count,count(*)/'+total+'*100 as percentage&$group='+item.attr('data-column')+'&$order=percentage DESC';
     var data = JSON.parse($.ajax({
         type: "GET",
         url: url,
