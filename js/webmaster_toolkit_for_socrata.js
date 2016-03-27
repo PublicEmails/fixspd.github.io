@@ -113,7 +113,7 @@ function table_of_boolean_percentages(item) {
         async: false
     }).responseText);
     var total = parseInt(data[0]['count']);
-    var html = '<table class="table small">';
+    var html = '<h3>'+item.attr('data-heading')+'</h3><table class="table small">';
     var labels = item.attr('data-labels').split(',');
     $.each(item.attr('data-columns').split(','), function(i, v){
         url = 'https://'+item.attr('data-domain')+'/resource/'+item.attr('data-datasetid')+'.json?$select=count(*) as count&'+v+'='+item.attr('data-trueis');
