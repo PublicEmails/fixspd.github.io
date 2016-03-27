@@ -121,7 +121,7 @@ function table_of_boolean_percentages(item) {
             url: url,
             async: false
         }).responseText);    
-        html += '<tr><th>'+v+'</th><td>'+Math.round(parseInt(totaldata['count'])/total*100)+'%</td></tr>';
+        html += '<tr><th>'+v+'</th><td>'+Math.round(parseInt(data['count'])/total*100)+'%</td></tr>';
     })
     html += '</table>';
     item.html(html);
