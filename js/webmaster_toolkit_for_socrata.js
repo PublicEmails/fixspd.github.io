@@ -114,6 +114,7 @@ function table_of_boolean_percentages(item) {
     }).responseText);
     var total = parseInt(data[0]['count']);
     var html = '<table>';
+    var labels = item.attr('data-labels').split(',');
     $.each(item.attr('data-columns').split(','), function(i, v){
         url = 'https://'+item.attr('data-domain')+'/resource/'+item.attr('data-datasetid')+'.json?$select=count(*) as count&'+v+'='+item.attr('data-trueis');
         var data = JSON.parse($.ajax({
@@ -121,7 +122,7 @@ function table_of_boolean_percentages(item) {
             url: url,
             async: false
         }).responseText);    
-        html += '<tr><th>'+v+'</th><td>'+Math.round(parseInt(data[0]['count'])/total*100)+'% ('+data[0]['count']+'/'+total+')</td></tr>';
+        html += '<tr><th>'+labels[i]+'</th><td>'+Math.round(parseInt(data[0]['count'])/total*100)+'% ('+data[0]['count']+'/'+total+')</td></tr>';
     })
     html += '</table>';
     item.html(html);
