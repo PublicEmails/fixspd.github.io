@@ -80,16 +80,12 @@ function pieChart(item) {
     var ctx = item.find('canvas').get(0).getContext("2d");
     chartData = [];
     $.each(data, function(i,v) {
-        r = Math.floor(Math.random() * 200);
-        g = Math.floor(Math.random() * 200);
-        b = Math.floor(Math.random() * 200);
-        c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
-        h = 'rgb(' + (r+20) + ', ' + (g+20) + ', ' + (b+20) + ')';
+        
         chartData.push( {
           value : parseInt(v['count']),
           label : v['column'],
-          color: c,
-          highlight: h
+          color: window.colors[i],
+          highlight: window.highlightColors[i]
         }) ;
     });
     var options = { } ;
@@ -107,6 +103,17 @@ function handleSODAPlayground() {
   }); 
 }
 function main() {
+    window.colors = [];
+    window.highlightColors = [];
+    for (var i=0;i<100;i++) {
+        r = Math.floor(Math.random() * 200);
+        g = Math.floor(Math.random() * 200);
+        b = Math.floor(Math.random() * 200);
+        c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
+        h = 'rgb(' + (r+20) + ', ' + (g+20) + ', ' + (b+20) + ')';
+        window.colors.push(c);
+        window.highlightColors.push(h)
+    }
     var plugins = ['https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'];
     setTimeout(function(){var originalLeave = $.fn.popover.Constructor.prototype.leave;
 $.fn.popover.Constructor.prototype.leave = function(obj){
