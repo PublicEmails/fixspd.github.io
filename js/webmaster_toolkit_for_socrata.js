@@ -83,7 +83,7 @@ function pieChart(item) {
         
         chartData.push( {
           value : parseInt(v['count']),
-          percentage : v['percentage'],
+          percentage : Math.round(parseFloat(v['percentage'])),
           label : v['column'],
           color: window.colors[i],
           highlight: window.highlightColors[i]
@@ -94,8 +94,8 @@ function pieChart(item) {
                     +'<li>'
                     +'<span style=\"background-color:<%=chartData[i].color%>\"></span>'
                     +'<% if (chartData[i].label) { %><%= chartData[i].label %><% } %>'
-                    +'<% if (chartData[i].percentage) { %><%= chartData[i].percentage %>%<% } %>'
-                    +'<% if (chartData[i].value) { %> (<%= chartData[i].value %>)<% } %>'
+                    +'<% if (chartData[i].percentage) { %> <%= chartData[i].percentage %>%<% } %>'
+                    +'<% if (chartData[i].value) { %> (<%= chartData[i].value %>/<%= total %>)<% } %>'
                     
                   +'</li>'
                 +'<% } %>'
