@@ -105,11 +105,35 @@ function pieChart(item) {
     var myChart = new Chart(ctx).Pie(chartData,options);
     item.find('.chart-legend').html(myChart.generateLegend());
 }
+function table_of_boolean_percentages(item) {
+    url = 'https://'+item.attr('data-domain')+'/resource/'+item.attr('data-datasetid')+'.json?$select=count(*) as count';
+    var data = JSON.parse($.ajax({
+        type: "GET",
+        url: url,
+        async: false
+    }).responseText);
+    var total = parseInt(data[0]['count']);
+    var html = '<table>';
+    $.each(item.attr('data-columns').spilt(','), function(i, v){
+        url = 'https://'+item.attr('data-domain')+'/resource/'+item.attr('data-datasetid')+'.json?$select=count(*) as count&'+v+'='+item.attr('data-trueis');
+        var data = JSON.parse($.ajax({
+            type: "GET",
+            url: url,
+            async: false
+        }).responseText);    
+        html += '<tr><th>'+v+'</th><td>'+Math.round(parseInt(totaldata['count'])/total*100)+'%</td></tr>';
+    })
+    html += '</table>';
+    item.html(html);
+}
 function handleSODAPlayground() {
   $.each($('.sodaplayground'), function(item) {
     switch ($(this).attr('data-type')) {
         case "pie_chart":
             pieChart($(this));
+            break;
+        case "table_of_boolean_percentages":
+            table_of_boolean_percentages($(this));
             break;
     }   
   }); 
