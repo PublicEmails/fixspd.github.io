@@ -74,7 +74,7 @@ function pieChart(item) {
         url: url,
         async: false
     }).responseText);
-    console.log(JSON.stringify(data));
+    
     var infoHtml = '<i class="fa fa-info-circle info" data-toggle="popover" data-placement="bottom" title=\'<a href="'+url+'">'+url+'</a>\'></i>'
     item.append('<h3>'+item.attr('data-heading')+infoHtml+'</h3><canvas></canvas><div class="chart-legend small"></div>')
     var ctx = item.find('canvas').get(0).getContext("2d");
