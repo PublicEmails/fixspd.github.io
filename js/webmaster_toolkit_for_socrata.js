@@ -138,24 +138,24 @@ function horizontal_bar_chart(item) {
     item.html(html);
     var ctx = item.find('canvas').get(0).getContext("2d");
     var linedata = {
-5     labels : ["V1","V2","V3","V4"],
-6     datasets : [
-7         {
-8             fillColor : "rgba(220,220,220,0.5)",
-9             strokeColor : "rgba(220,220,220,1)",
-10            pointColor : "rgba(220,220,220,1)",
-11            pointStrokeColor : "rgba(220,220,220,1)",
-12            data : [105,1234,103412,15]
-13        },
-14        {
-15            fillColor : "rgba(151,187,205,0.5)",
-16            strokeColor : "rgba(151,187,205,1)",
-17            pointColor : "rgba(151,187,205,1)",
-18            pointStrokeColor : "rgba(151,187,205,1)",
-19            data : [2341,763,122,4]
-20        }
-21    ]
-22    }
+     labels : ["V1","V2","V3","V4"],
+     datasets : [
+         {
+             fillColor : "rgba(220,220,220,0.5)",
+             strokeColor : "rgba(220,220,220,1)",
+            pointColor : "rgba(220,220,220,1)",
+            pointStrokeColor : "rgba(220,220,220,1)",
+            data : [105,1234,103412,15]
+        },
+        {
+            fillColor : "rgba(151,187,205,0.5)",
+            strokeColor : "rgba(151,187,205,1)",
+            pointColor : "rgba(151,187,205,1)",
+            pointStrokeColor : "rgba(151,187,205,1)",
+            data : [2341,763,122,4]
+        }
+    ]
+    }
     new Chart(document.getElementById("canvas").getContext("2d")).HorizontalBar(linedata);
 }
 function handleSODAPlayground() {
