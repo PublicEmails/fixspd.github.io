@@ -135,7 +135,7 @@ function horizontal_bar_chart(item) {
         async: false
     }).responseText);
     var html = '<h3>'+item.attr('data-heading')+'</h3><canvas></canvas>';
-    item.html(html);
+    item.append(html);
     var ctx = item.find('canvas').get(0).getContext("2d");
     var linedata = {
      labels : ["V1","V2","V3","V4"],
@@ -156,7 +156,7 @@ function horizontal_bar_chart(item) {
         }
     ]
     }
-    new Chart(document.getElementById("canvas").getContext("2d")).HorizontalBar(linedata);
+    new Chart(ctx).HorizontalBar(linedata);
 }
 function handleSODAPlayground() {
   $.each($('.sodaplayground'), function(item) {
