@@ -127,6 +127,37 @@ function table_of_boolean_percentages(item) {
     html += '</table>';
     item.html(html);
 }
+function horizontal_bar_chart(item) {
+    url = 'https://'+item.attr('data-domain')+'/resource/'+item.attr('data-datasetid')+'.json?$query='+item.attr('data-query');
+    var data = JSON.parse($.ajax({
+        type: "GET",
+        url: url,
+        async: false
+    }).responseText);
+    var html = '<h3>'+item.attr('data-heading')+'</h3><canvas></canvas>';
+    item.html(html);
+    var ctx = item.find('canvas').get(0).getContext("2d");
+    var linedata = {
+5     labels : ["V1","V2","V3","V4"],
+6     datasets : [
+7         {
+8             fillColor : "rgba(220,220,220,0.5)",
+9             strokeColor : "rgba(220,220,220,1)",
+10            pointColor : "rgba(220,220,220,1)",
+11            pointStrokeColor : "rgba(220,220,220,1)",
+12            data : [105,1234,103412,15]
+13        },
+14        {
+15            fillColor : "rgba(151,187,205,0.5)",
+16            strokeColor : "rgba(151,187,205,1)",
+17            pointColor : "rgba(151,187,205,1)",
+18            pointStrokeColor : "rgba(151,187,205,1)",
+19            data : [2341,763,122,4]
+20        }
+21    ]
+22    }
+    new Chart(document.getElementById("canvas").getContext("2d")).HorizontalBar(linedata);
+}
 function handleSODAPlayground() {
   $.each($('.sodaplayground'), function(item) {
     switch ($(this).attr('data-type')) {
@@ -135,6 +166,9 @@ function handleSODAPlayground() {
             break;
         case "table_of_boolean_percentages":
             table_of_boolean_percentages($(this));
+            break;
+        case "horizontal_bar_chart":
+            horizontal_bar_chart($(this));
             break;
     }   
   }); 
@@ -151,7 +185,7 @@ function main() {
         window.colors.push(c);
         window.highlightColors.push(h)
     }
-    var plugins = ['https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'];
+    var plugins = ['https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js', 'http://fvancop.github.io/ChartNew.js/ChartNew.js'];
     setTimeout(function(){var originalLeave = $.fn.popover.Constructor.prototype.leave;
 $.fn.popover.Constructor.prototype.leave = function(obj){
   var self = obj instanceof this.constructor ?
