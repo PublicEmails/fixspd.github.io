@@ -227,6 +227,7 @@ data-url="https://data.seattle.gov/resource/ppwx-mtmh.json?$select=count(*)"></s
           
           <div class="sodaplayground pie_chart" data-heading="What types of records were requested in new system" data-type="table_of_boolean_percentages" data-domain="data.seattle.gov" data-datasetid="ppwx-mtmh" data-columns="spd_recreqincidentreportyesno,spd_recreqfollowupinvestigationyesno,spd_recreqphotoyesno,spd_recreqspd911yesno,spd_recreqvideoyesno,spd_recreqotheryesno" data-labels="Requested incident report,Requested follow up investigation report,Requested photos,Requested 911,Requested videos,Requested other" data-trueis="Yes"></div>
           <div class="sodaplayground pie_chart" data-heading="The {{ count }} employees assigned to public disclosure unit as of {{ asof }}" data-type="table" data-domain="opendata.socrata.com" data-datasetid="aspn-jfpg" data-q="disclosure"></div>
+          <div class="sodaplayground pie_chart" data-heading="Number of requests per requester in new system" data-type="horizontal_bar_chart" data-domain="communities.socrata.com" data-datasetid="dy3e-7ipt" data-query="SELECT%20customer_id,reference_no%20GROUP%20BY%20customer_id,reference_no%20|>%20SELECT%20customer_id,count(*)%20GROUP%20BY%20customer_id%20ORDER%20BY%20count(*)%20DESC%20LIMIT%2060000"></div>
           
           
           
