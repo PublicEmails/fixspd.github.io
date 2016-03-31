@@ -145,7 +145,7 @@ function horizontal_bar_chart(item) {
              strokeColor : "rgba(220,220,220,1)",
             pointColor : "rgba(220,220,220,1)",
             pointStrokeColor : "rgba(220,220,220,1)",
-            data : _.pluck(data,"count");
+            data : _.pluck(data,"count")
         }
     ]
     }
