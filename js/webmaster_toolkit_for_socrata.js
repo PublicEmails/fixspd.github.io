@@ -185,7 +185,7 @@ function main() {
         window.colors.push(c);
         window.highlightColors.push(h)
     }
-    var plugins = ['https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js', 'http://fvancop.github.io/ChartNew.js/ChartNew.js'];
+    var plugins = ['https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js', 'https://rawgit.com/tomsouthall/Chart.HorizontalBar.js/master/Chart.HorizontalBar.js'];
     setTimeout(function(){var originalLeave = $.fn.popover.Constructor.prototype.leave;
 $.fn.popover.Constructor.prototype.leave = function(obj){
   var self = obj instanceof this.constructor ?
