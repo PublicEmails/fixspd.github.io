@@ -135,7 +135,7 @@ function horizontal_bar_chart(item) {
         type: "GET",
         url: url,
         async: false
-    }).responseText);
+    }).responseText).reverse();
     var html = '<h3>'+item.attr('data-heading')+infoHtml+'</h3><canvas></canvas>';
     item.append(html);
     var ctx = item.find('canvas').get(0).getContext("2d");
