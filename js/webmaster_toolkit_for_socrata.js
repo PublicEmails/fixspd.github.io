@@ -105,6 +105,32 @@ function pieChart(item) {
     var myChart = new Chart(ctx).Pie(chartData,options);
     item.find('.chart-legend').html(myChart.generateLegend());
 }
+function table(item) {
+    //url = 'https://'+item.attr('data-domain')+'/resource/'+item.attr('data-datasetid')+'.json?$select=count(*) as count';
+    var data = JSON.parse($.ajax({
+        type: "GET",
+        url: item.attr('data-url'),
+        async: false
+    }).responseText);
+    var total = parseInt(data[0]['count']);
+    var html = '<h3>'+item.attr('data-heading')+'</h3><table class="table small">';
+    var labels = item.attr('data-labels').split(',');
+    var cols = item.attr('data-cols').split(',');
+    html += '<tr>';
+    $.each(labels, function(i, v) {
+        html += '<th>'+v+'</th>';
+    })
+    html += '</tr>';
+    $.each(data, function(i, v){
+        html += '<tr>';
+        $.each(cols, function(j, v2) {
+            html += '<td>'+data[i][v2]+'</td>';
+        })
+        html += '</tr>';
+    })
+    html += '</table>';
+    item.html(html);
+}
 function table_of_boolean_percentages(item) {
     url = 'https://'+item.attr('data-domain')+'/resource/'+item.attr('data-datasetid')+'.json?$select=count(*) as count';
     var data = JSON.parse($.ajax({
@@ -165,6 +191,9 @@ function handleSODAPlayground() {
     switch ($(this).attr('data-type')) {
         case "pie_chart":
             pieChart($(this));
+            break;
+        case "table":
+            table($(this));
             break;
         case "table_of_boolean_percentages":
             table_of_boolean_percentages($(this));
