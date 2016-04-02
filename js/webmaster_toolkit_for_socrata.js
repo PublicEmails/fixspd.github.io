@@ -136,11 +136,18 @@ function horizontal_bar_chart(item) {
         url: url,
         async: false
     }).responseText).reverse();
+    var url = 'https://communities.socrata.com/resource/dy3e-7ipt.json?$select=customer_id,new_value&$where=new_value%20like%20%27%25Your%20request%20was%20received%20on%25%27';
+    var labels = _.pluck(data,"customer_id");
+    var customers = JSON.parse($.ajax({
+        type: "GET",
+        url: url,
+        async: false
+    }).responseText).reverse();
     var html = '<h3>'+item.attr('data-heading')+infoHtml+'</h3><canvas></canvas>';
     item.append(html);
     var ctx = item.find('canvas').get(0).getContext("2d");
     var linedata = {
-     labels : _.pluck(data,"customer_id"),
+     labels : labels,
      datasets : [
          {
              fillColor : "rgba(220,220,220,0.5)",
