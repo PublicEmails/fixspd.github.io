@@ -162,13 +162,8 @@ function horizontal_bar_chart(item) {
         url: url,
         async: false
     }).responseText).reverse();
-    var url = 'https://communities.socrata.com/resource/ip9b-6red.json?$select=customer_name,number_of_requests';
+    
     var labels = _.pluck(data,"customer_name");
-    var customers = JSON.parse($.ajax({
-        type: "GET",
-        url: url,
-        async: false
-    }).responseText).reverse();
     var html = '<h3>'+item.attr('data-heading')+infoHtml+'</h3><canvas></canvas>';
     item.append(html);
     var ctx = item.find('canvas').get(0).getContext("2d");
