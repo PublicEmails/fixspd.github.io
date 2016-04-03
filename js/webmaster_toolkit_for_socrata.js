@@ -162,7 +162,7 @@ function horizontal_bar_chart(item) {
         url: url,
         async: false
     }).responseText).reverse();
-    var url = 'https://communities.socrata.com/resource/dy3e-7ipt.json?$select=customer_id,new_value&$where=new_value%20like%20%27%25Your%20request%20was%20received%20on%25%27';
+    var url = 'https://communities.socrata.com/resource/ip9b-6red.json?$select=customer_name,number_of_requests';
     var labels = _.pluck(data,"customer_name");
     var customers = JSON.parse($.ajax({
         type: "GET",
