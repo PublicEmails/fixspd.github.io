@@ -163,7 +163,7 @@ function horizontal_bar_chart(item) {
         async: false
     }).responseText).reverse();
     var url = 'https://communities.socrata.com/resource/dy3e-7ipt.json?$select=customer_id,new_value&$where=new_value%20like%20%27%25Your%20request%20was%20received%20on%25%27';
-    var labels = _.pluck(data,"customer_id");
+    var labels = _.pluck(data,"customer_name");
     var customers = JSON.parse($.ajax({
         type: "GET",
         url: url,
@@ -180,7 +180,7 @@ function horizontal_bar_chart(item) {
              strokeColor : "rgba(220,220,220,1)",
             pointColor : "rgba(220,220,220,1)",
             pointStrokeColor : "rgba(220,220,220,1)",
-            data : _.map(_.pluck(data,"count"), function(num) { return parseInt(num) })
+            data : _.map(_.pluck(data,"number_of_requests"), function(num) { return parseInt(num) })
         }
     ]
     }
