@@ -184,20 +184,24 @@ function horizontal_bar_chart(item) {
 }
 function handleSODAPlayground() {
   $.each($('.sodaplayground'), function(item) {
-    switch ($(this).attr('data-type')) {
-        case "pie_chart":
-            pieChart($(this));
-            break;
-        case "table":
-            table($(this));
-            break;
-        case "table_of_boolean_percentages":
-            table_of_boolean_percentages($(this));
-            break;
-        case "horizontal_bar_chart":
-            horizontal_bar_chart($(this));
-            break;
-    }   
+    try {
+        switch ($(this).attr('data-type')) {
+            case "pie_chart":
+                pieChart($(this));
+                break;
+            case "table":
+                table($(this));
+                break;
+            case "table_of_boolean_percentages":
+                table_of_boolean_percentages($(this));
+                break;
+            case "horizontal_bar_chart":
+                horizontal_bar_chart($(this));
+                break;
+        }   
+    } catch (e) {
+        console.log(e)
+    }
   }); 
 }
 function main() {
