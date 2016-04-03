@@ -156,7 +156,9 @@ function table_of_boolean_percentages(item) {
 function horizontal_bar_chart(item) {
     url = 'https://'+item.attr('data-domain')+'/resource/'+item.attr('data-datasetid')+'.json?$query='+item.attr('data-query');
     var infoHtml = '<i class="fa fa-info-circle info" data-toggle="popover" data-placement="bottom" title=\'<a href="'+url+'">'+url+'</a>\'></i>'
-    
+    var html = '<h3>'+item.attr('data-heading')+infoHtml+'</h3><canvas></canvas>';
+    item.append(html);
+    console.log(url);
     var data = JSON.parse($.ajax({
         type: "GET",
         url: url,
@@ -164,8 +166,7 @@ function horizontal_bar_chart(item) {
     }).responseText).reverse();
     
     var labels = _.pluck(data,"customer_name");
-    var html = '<h3>'+item.attr('data-heading')+infoHtml+'</h3><canvas></canvas>';
-    item.append(html);
+    
     var ctx = item.find('canvas').get(0).getContext("2d");
     var linedata = {
      labels : labels,
