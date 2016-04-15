@@ -136,7 +136,7 @@ function table(item) {
     $.each(data, function(i, v){
         html += '<tr>';
         if (show_row_num) {
-          html += '<td>'+i+'</td>';
+          html += '<td>'+(i+1)+'</td>';
         }
         $.each(cols, function(j, v2) {
             html += '<td>'+data[i][v2]+'</td>';
