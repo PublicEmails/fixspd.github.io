@@ -139,7 +139,11 @@ function table(item) {
           html += '<td>'+(i+1)+'</td>';
         }
         $.each(cols, function(j, v2) {
-            html += '<td>'+data[i][v2]+'</td>';
+            var cell = data[i][v2];
+            if (!cell) {
+              cell = '';
+            }
+            html += '<td>'+cell+'</td>';
         })
         html += '</tr>';
     })
