@@ -316,7 +316,7 @@ data-url="https://data.seattle.gov/resource/ppwx-mtmh.json?$select=count(*)"></s
 	}
 	
 	// get line chart canvas
-	var opened_requests_per_day = document.getElementById('closed_requests_per_day').getContext('2d');
+	var opened_requests_per_day = document.getElementById('opened_requests_per_day').getContext('2d');
 
 	// draw line chart
 	new Chart(opened_requests_per_day).Line(buyerData,{pointHitDetectionRadius:5,customTooltips: function (tooltip) {
@@ -417,7 +417,7 @@ data-url="https://data.seattle.gov/resource/ppwx-mtmh.json?$select=count(*)"></s
 	}
 	
 	// get line chart canvas
-	var opened_requests_per_day = document.getElementById('opened_requests_per_day').getContext('2d');
+	var closed_requests_per_day = document.getElementById('closed_requests_per_day').getContext('2d');
 
 	// draw line chart
 	new Chart(opened_requests_per_day).Line(buyerData,{pointHitDetectionRadius:5,customTooltips: function (tooltip) {
