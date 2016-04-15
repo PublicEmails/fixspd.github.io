@@ -117,7 +117,7 @@ function table(item) {
     var labels = item.attr('data-labels').split(',');
     var cols = item.attr('data-cols').split(',');
     html += '<tr>';
-    if (item.hasAttribute("data-show-row-num")) {
+    if (item[0].hasAttribute("data-show-row-num")) {
       if (item.attr("data-show-row-num") == 'true') {
         show_row_num = true;
       } else {
