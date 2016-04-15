@@ -230,9 +230,23 @@ function handleSODAPlayground() {
           
         }
       }
-      
+      var data = JSON.parse($.ajax({
+          type: "GET",
+          url: url,
+          async: false
+      }).responseText).reverse();
+      var heading = item.attr('data-heading');
+      var variables = {};
+      for (var i = 0, atts = item[0].attributes, n = atts.length, arr = []; i < n; i++){
+        if (atts[i].nodeName.indexOf('data-variable-')) {
+          variables[atts[i].nodeName.slice('data-variable-'.length)] = data.length;
+        }
+      }
+      for (var key in variables) {
+        heading.replace('{{ '+key+' }}', variables[key]);
+      }
       var infoHtml = '<i class="fa fa-info-circle info" data-toggle="popover" data-placement="bottom" title=\'<a href="'+url+'">'+url+'</a>\'></i>'
-      item.append('<h3>'+item.attr('data-heading')+infoHtml+'</h3>');
+      item.append('<h3>'+heading+infoHtml+'</h3>');
     } catch (e) {
       console.log(e);
     }
