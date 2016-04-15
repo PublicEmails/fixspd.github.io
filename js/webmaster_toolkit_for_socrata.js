@@ -174,7 +174,7 @@ function table_of_boolean_percentages(item) {
     item.html(html);
 }
 function horizontal_bar_chart(item) {
-    url = 'https://'+item.attr('data-domain')+'/resource/'+item.attr('data-datasetid')+'.json?$query='+item.attr('data-query');
+    //url = 'https://'+item.attr('data-domain')+'/resource/'+item.attr('data-datasetid')+'.json?$query='+item.attr('data-query');
     var infoHtml = '<i class="fa fa-info-circle info" data-toggle="popover" data-placement="bottom" title=\'<a href="'+url+'">'+url+'</a>\'></i>'
     var html = '<h3>'+item.attr('data-heading')+infoHtml+'</h3><canvas></canvas>';
     item.append(html);
@@ -223,7 +223,11 @@ function handleSODAPlayground() {
           //data-domain="opendata.socrata.com" data-datasetid="aspn-jfpg" data-q="disclosure"
           if (item[0].hasAttribute("data-q")) {
             url = 'https://'+item.attr('data-domain')+'/resource/'+item.attr('data-datasetid')+'.json?$q='+item.attr("data-q");
+          } else if (item[0].hasAttribute("data-query")) {
+            url = 'https://'+item.attr('data-domain')+'/resource/'+item.attr('data-datasetid')+'.json?$query='+item.attr("data-query"); 
           }
+          
+          
         }
       }
       
@@ -244,7 +248,7 @@ function handleSODAPlayground() {
                 table_of_boolean_percentages($(this));
                 break;
             case "horizontal_bar_chart":
-                horizontal_bar_chart($(this));
+                horizontal_bar_chart($(this), url);
                 break;
         }   
     } catch (e) {
