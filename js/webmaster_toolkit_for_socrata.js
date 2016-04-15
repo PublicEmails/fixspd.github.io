@@ -76,7 +76,7 @@ function pieChart(item) {
     }).responseText);
     
     var infoHtml = '<i class="fa fa-info-circle info" data-toggle="popover" data-placement="bottom" title=\'<a href="'+url+'">'+url+'</a>\'></i>'
-    item.append('<h3>'+item.attr('data-heading')+infoHtml+'</h3><canvas></canvas><div class="chart-legend small"></div>')
+    item.append('<canvas></canvas><div class="chart-legend small"></div>')
     var ctx = item.find('canvas').get(0).getContext("2d");
     chartData = [];
     $.each(data, function(i,v) {
@@ -117,6 +117,7 @@ function table(item) {
     var labels = item.attr('data-labels').split(',');
     var cols = item.attr('data-cols').split(',');
     html += '<tr>';
+    
     if (item[0].hasAttribute("data-show-row-num")) {
       if (item.attr("data-show-row-num") == 'true') {
         show_row_num = true;
@@ -205,7 +206,22 @@ function handleSODAPlayground() {
   $.each($('.sodaplayground'), function(item) {
     item = $(this);
     try {
-      var url = item.attr('data-url');
+      if (item[0].hasAttribute("data-url")) {
+        var url = item.attr('data-url');  
+      } else {
+        if (item.attr('data-type') == 'pie_chart') {
+          url = 'https://'+item.attr('data-domain')+'/resource/'+item.attr('data-datasetid')+'.json?$select=count(*) as count';
+          var data = JSON.parse($.ajax({
+              type: "GET",
+              url: url,
+              async: false
+          }).responseText);
+          var total = data[0]['count'];
+          url = 'https://'+item.attr('data-domain')+'/resource/'+item.attr('data-datasetid')+'.json?$select=CASE('+item.attr('data-column')+' IS NULL,%27Unknown%27,'+item.attr('data-column')+' IS NOT NULL,'+item.attr('data-column')+') as column,count(*) as count,count(*)/'+total+'*100 as percentage&$group='+item.attr('data-column')+'&$order=percentage DESC';
+          
+        }
+      }
+      
       var infoHtml = '<i class="fa fa-info-circle info" data-toggle="popover" data-placement="bottom" title=\'<a href="'+url+'">'+url+'</a>\'></i>'
       item.append('<h3>'+item.attr('data-heading')+infoHtml+'</h3>');
     } catch (e) {
