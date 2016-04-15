@@ -243,7 +243,7 @@ function handleSODAPlayground() {
         }
       }
       for (var key in variables) {
-        heading.replace('{{ '+key+' }}', variables[key]);
+        heading = heading.replace('{{ '+key+' }}', variables[key]);
       }
       var infoHtml = '<i class="fa fa-info-circle info" data-toggle="popover" data-placement="bottom" title=\'<a href="'+url+'">'+url+'</a>\'></i>'
       item.append('<h3>'+heading+infoHtml+'</h3>');
