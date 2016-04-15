@@ -203,6 +203,7 @@ function horizontal_bar_chart(item) {
 }
 function handleSODAPlayground() {
   $.each($('.sodaplayground'), function(item) {
+    item = $(this);
     try {
       var infoHtml = '<i class="fa fa-info-circle info" data-toggle="popover" data-placement="bottom" title=\'<a href="'+url+'">'+url+'</a>\'></i>'
       $(item).append('<h3>'+$(item).attr('data-heading')+infoHtml+'</h3>');
