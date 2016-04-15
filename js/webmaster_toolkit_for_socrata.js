@@ -203,8 +203,12 @@ function horizontal_bar_chart(item) {
 }
 function handleSODAPlayground() {
   $.each($('.sodaplayground'), function(item) {
-    var infoHtml = '<i class="fa fa-info-circle info" data-toggle="popover" data-placement="bottom" title=\'<a href="'+url+'">'+url+'</a>\'></i>'
-    item.append('<h3>'+item.attr('data-heading')+infoHtml+'</h3>')
+    try {
+      var infoHtml = '<i class="fa fa-info-circle info" data-toggle="popover" data-placement="bottom" title=\'<a href="'+url+'">'+url+'</a>\'></i>'
+      item.append('<h3>'+item.attr('data-heading')+infoHtml+'</h3>');
+    } catch (e) {
+      console.log(e);
+    }
     try {
         switch ($(this).attr('data-type')) {
             case "pie_chart":
