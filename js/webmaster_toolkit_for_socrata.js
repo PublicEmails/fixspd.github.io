@@ -105,11 +105,11 @@ function pieChart(item) {
     var myChart = new Chart(ctx).Pie(chartData,options);
     item.find('.chart-legend').html(myChart.generateLegend());
 }
-function table(item) {
+function table(item, url) {
     //url = 'https://'+item.attr('data-domain')+'/resource/'+item.attr('data-datasetid')+'.json?$select=count(*) as count';
     var data = JSON.parse($.ajax({
         type: "GET",
-        url: item.attr('data-url'),
+        url: url,
         async: false
     }).responseText);
     var total = parseInt(data[0]['count']);
@@ -219,6 +219,11 @@ function handleSODAPlayground() {
           var total = data[0]['count'];
           url = 'https://'+item.attr('data-domain')+'/resource/'+item.attr('data-datasetid')+'.json?$select=CASE('+item.attr('data-column')+' IS NULL,%27Unknown%27,'+item.attr('data-column')+' IS NOT NULL,'+item.attr('data-column')+') as column,count(*) as count,count(*)/'+total+'*100 as percentage&$group='+item.attr('data-column')+'&$order=percentage DESC';
           
+        } else {
+          //data-domain="opendata.socrata.com" data-datasetid="aspn-jfpg" data-q="disclosure"
+          if (item[0].hasAttribute("data-q")) {
+            url = 'https://'+item.attr('data-domain')+'/resource/'+item.attr('data-datasetid')+'.json?$q='+item.attr("data-q");
+          }
         }
       }
       
@@ -233,7 +238,7 @@ function handleSODAPlayground() {
                 pieChart($(this));
                 break;
             case "table":
-                table($(this));
+                table($(this), url);
                 break;
             case "table_of_boolean_percentages":
                 table_of_boolean_percentages($(this));
