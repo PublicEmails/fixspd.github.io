@@ -117,12 +117,27 @@ function table(item) {
     var labels = item.attr('data-labels').split(',');
     var cols = item.attr('data-cols').split(',');
     html += '<tr>';
+    if ($(this)[0].hasAttribute("data-show-row-num")) {
+      if ($(this).attr("data-show-row-num") == 'true') {
+        show_row_num = true;
+      } else {
+        show_row_num = false;
+      }
+    } else {
+      show_row_num = false;
+    }
+    if (show_row_num) {
+      html += '<th></th>';
+    }
     $.each(labels, function(i, v) {
         html += '<th>'+v+'</th>';
     })
     html += '</tr>';
     $.each(data, function(i, v){
         html += '<tr>';
+        if (show_row_num) {
+          html += '<td>'+i+'</td>';
+        }
         $.each(cols, function(j, v2) {
             html += '<td>'+data[i][v2]+'</td>';
         })
