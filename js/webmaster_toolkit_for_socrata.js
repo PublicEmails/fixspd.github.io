@@ -176,7 +176,7 @@ function table_of_boolean_percentages(item) {
 function horizontal_bar_chart(item, url) {
     //url = 'https://'+item.attr('data-domain')+'/resource/'+item.attr('data-datasetid')+'.json?$query='+item.attr('data-query');
     var infoHtml = '<i class="fa fa-info-circle info" data-toggle="popover" data-placement="bottom" title=\'<a href="'+url+'">'+url+'</a>\'></i>'
-    var html = '<h3>'+item.attr('data-heading')+infoHtml+'</h3><canvas></canvas>';
+    var html = '<canvas></canvas>';
     item.append(html);
     console.log(url);
     var data = JSON.parse($.ajax({
