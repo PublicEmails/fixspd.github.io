@@ -113,7 +113,7 @@ function table(item) {
         async: false
     }).responseText);
     var total = parseInt(data[0]['count']);
-    var html = '<h3>'+item.attr('data-heading')+'</h3><table class="table small">';
+    var html = '<table class="table small">';
     var labels = item.attr('data-labels').split(',');
     var cols = item.attr('data-cols').split(',');
     html += '<tr>';
@@ -148,7 +148,7 @@ function table(item) {
         html += '</tr>';
     })
     html += '</table>';
-    item.html(html);
+    item.append(html);
 }
 function table_of_boolean_percentages(item) {
     url = 'https://'+item.attr('data-domain')+'/resource/'+item.attr('data-datasetid')+'.json?$select=count(*) as count';
