@@ -386,7 +386,7 @@ data-url="https://data.seattle.gov/resource/ppwx-mtmh.json?$select=count(*)"></s
             fontStyle: tooltip.fontStyle,
         });
     }});
-    var url = 'https://data.seattle.gov/resource/ppwx-mtmh.json?$select=date_trunc_ymd(close_date)%20as%20date,count(*)%20as%20count&$group=date_trunc_ymd(close_date)&$order=date_trunc_ymd(close_date)';
+    var url = 'https://data.seattle.gov/resource/ppwx-mtmh.json?$select=date_trunc_ymd(close_date)%20as%20date,count(*)%20as%20count&$group=date_trunc_ymd(close_date)&$order=date_trunc_ymd(close_date)&$where=close_date%20IS%20NOT%20NULL';
   var data = JSON.parse($.ajax({
             type: "GET",
             url: url,
