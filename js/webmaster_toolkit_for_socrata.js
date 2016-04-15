@@ -238,7 +238,7 @@ function handleSODAPlayground() {
       var heading = item.attr('data-heading');
       var variables = {};
       for (var i = 0, atts = item[0].attributes, n = atts.length, arr = []; i < n; i++){
-        if (atts[i].nodeName.indexOf('data-variable-')) {
+        if (atts[i].nodeName.indexOf('data-variable-') > -1) {
           variables[atts[i].nodeName.slice('data-variable-'.length)] = data.length;
         }
       }
