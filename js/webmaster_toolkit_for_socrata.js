@@ -186,7 +186,7 @@ function line_chart(item, url) {
     counts.push(parseInt(v[item.attr('data-y')]));
   });
 	// line chart data
-	var cartData = {
+	var chartData = {
 		labels : labels,
 		datasets : [
 		    {
