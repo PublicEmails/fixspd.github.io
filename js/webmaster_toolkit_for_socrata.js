@@ -182,7 +182,7 @@ function line_chart(item, url) {
   var labels = [];
   var counts = [];
   $.each(data, function(i, v) {
-    labels.push(v[item.attr('data-x')]);
+    labels.push(moment(v[item.attr('data-x')]).format(item.attr('data-date-format')));
     counts.push(parseInt(v[item.attr('data-y')]));
   });
 	// line chart data
@@ -323,7 +323,7 @@ function main() {
         window.colors.push(c);
         window.highlightColors.push(h)
     }
-    var plugins = ['https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js', 'https://rawgit.com/tomsouthall/Chart.HorizontalBar.js/master/Chart.HorizontalBar.js'];
+    var plugins = ['https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js', 'https://rawgit.com/tomsouthall/Chart.HorizontalBar.js/master/Chart.HorizontalBar.js'];
     setTimeout(function(){var originalLeave = $.fn.popover.Constructor.prototype.leave;
 $.fn.popover.Constructor.prototype.leave = function(obj){
   var self = obj instanceof this.constructor ?
