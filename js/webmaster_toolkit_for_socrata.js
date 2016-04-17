@@ -203,7 +203,7 @@ function line_chart(item, url) {
 	}
 	item.append('<canvas></canvas>')
 	// get line chart canvas
-	var ctx = item.find('canvas')[0].getContext('2d');
+	var ctx = item.find('canvas').get(0).getContext('2d');
 
 	// draw line chart
 	new Chart(ctx).Line(chartData,{pointHitDetectionRadius:5});
