@@ -201,7 +201,10 @@ function line_chart(item, url) {
 		]
     
 	}
-	item.append('<canvas></canvas>')
+	item.append('<canvas></canvas>');
+	item.find('canvas').css('width', '100%');
+	item.find('canvas').height(item.height() - item.find('h3').height());
+	
 	// get line chart canvas
 	var ctx = item.find('canvas').get(0).getContext('2d');
 
