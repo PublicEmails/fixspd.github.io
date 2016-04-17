@@ -173,6 +173,41 @@ function table_of_boolean_percentages(item) {
     html += '</table>';
     item.html(html);
 }
+function line_chart(item, url) {
+    var data = JSON.parse($.ajax({
+        type: "GET",
+        url: url,
+        async: false
+    }).responseText);
+  var labels = [];
+  var counts = [];
+  $.each(data, function(i, v) {
+    labels.push(v[item.attr('data-x')]);
+    counts.push(parseInt(v[item.attr('data-y')]));
+  });
+	// line chart data
+	var cartData = {
+		labels : labels,
+		datasets : [
+		    {
+				fillColor : "rgba(172,194,132,0.4)",
+				strokeColor : "#ACC26D",
+				pointColor : "#fff",
+				pointStrokeColor : "#9DB86D",
+				data : counts,
+                pointHighlightFill: "blue",
+                pointHighlightStroke: "rgba(220,220,220,1)"
+			}
+		]
+    
+	}
+	item.append('<canvas></canvas>')
+	// get line chart canvas
+	var ctx = item.find('canvas')[0].getContext('2d');
+
+	// draw line chart
+	new Chart(ctx).Line(chartData,{pointHitDetectionRadius:5});
+}
 function horizontal_bar_chart(item, url) {
     //url = 'https://'+item.attr('data-domain')+'/resource/'+item.attr('data-datasetid')+'.json?$query='+item.attr('data-query');
     var infoHtml = '<i class="fa fa-info-circle info" data-toggle="popover" data-placement="bottom" title=\'<a href="'+url+'">'+url+'</a>\'></i>'
@@ -263,6 +298,9 @@ function handleSODAPlayground() {
                 break;
             case "horizontal_bar_chart":
                 horizontal_bar_chart($(this), url);
+                break;
+            case "line_chart":
+                line_chart($(this), url);
                 break;
         }   
     } catch (e) {
