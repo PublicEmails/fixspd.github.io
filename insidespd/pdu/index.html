@@ -263,6 +263,7 @@ data-url="https://data.seattle.gov/resource/ppwx-mtmh.json?$select=count(*)"></s
           <div class="sodaplayground pie_chart" data-heading="Top requester accounts in new system" data-type="horizontal_bar_chart" data-domain="communities.socrata.com" data-datasetid="ip9b-6red" data-query="SELECT%20customer_name,number_of_requests%20LIMIT%2010"></div>
 <div class="clear"></div>
           <div class="sodaplayground line_chart" data-type="line_chart" data-heading="Number of opened records requests per day" data-url="https://data.seattle.gov/resource/ppwx-mtmh.json?$select=date_trunc_ymd(create_date)%20as%20date,count(*)%20as%20count&$group=date_trunc_ymd(create_date)&$order=date_trunc_ymd(create_date)" data-y="count" data-x="date"></div>
+          <div class="sodaplayground line_chart" data-type="line_chart" data-heading="Number of closed records requests per day" data-url="https://data.seattle.gov/resource/ppwx-mtmh.json?$select=date_trunc_ymd(close_date)%20as%20date,count(*)%20as%20count&$group=date_trunc_ymd(close_date)&$order=date_trunc_ymd(close_date)" data-y="count" data-x="date"></div>
           
           
           <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
