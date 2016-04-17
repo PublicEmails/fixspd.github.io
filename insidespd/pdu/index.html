@@ -246,6 +246,10 @@ data-url="https://data.seattle.gov/resource/ppwx-mtmh.json?$select=count(*)"></s
 .table th, .table td {
   padding:3px;
 }
+.line_chart {
+	width:100%;
+	height:400px;
+}
           </style>
           <div id="backlog_table" class="sodaplayground pie_chart" style="background:#000 url('/images/PDU_discs.jpg') no-repeat;color:#FFF;background-size:contain;" data-show-row-num="true" data-heading="Backlog in old system" data-type="table" data-url="https://data.seattle.gov/resource/a4j2-uu8v.json?$select=item_requested,%20received_date&$order=received_date&$where=completed_date%20IS%20NULL&$limit=20000" data-cols="received_date,item_requested" data-labels="Received date,Short description"></div>
           <div class="sodaplayground pie_chart" data-heading="Requester type in new system" data-type="pie_chart" data-domain="data.seattle.gov" data-datasetid="ppwx-mtmh" data-column="city_requestertype_internal"></div>
@@ -258,7 +262,7 @@ data-url="https://data.seattle.gov/resource/ppwx-mtmh.json?$select=count(*)"></s
           <div class="sodaplayground pie_chart" data-heading="The {{ count }} employees assigned to the Public Disclosure Unit as of {{ asof }}" data-type="table" data-labels="Name,Title" data-cols="name,rank_title_description" data-domain="opendata.socrata.com" data-datasetid="aspn-jfpg" data-q="disclosure" data-variable-count="count(*)"></div>
           <div class="sodaplayground pie_chart" data-heading="Top requester accounts in new system" data-type="horizontal_bar_chart" data-domain="communities.socrata.com" data-datasetid="ip9b-6red" data-query="SELECT%20customer_name,number_of_requests%20LIMIT%2010"></div>
 <div class="clear"></div>
-          <div class="sodaplayground" data-type="line_chart" data-heading="Number of opened records requests per day" data-url="https://data.seattle.gov/resource/ppwx-mtmh.json?$select=date_trunc_ymd(create_date)%20as%20date,count(*)%20as%20count&$group=date_trunc_ymd(create_date)&$order=date_trunc_ymd(create_date)" data-y="count" data-x="date"></div>
+          <div class="sodaplayground line_chart" data-type="line_chart" data-heading="Number of opened records requests per day" data-url="https://data.seattle.gov/resource/ppwx-mtmh.json?$select=date_trunc_ymd(create_date)%20as%20date,count(*)%20as%20count&$group=date_trunc_ymd(create_date)&$order=date_trunc_ymd(create_date)" data-y="count" data-x="date"></div>
           
           
           <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
