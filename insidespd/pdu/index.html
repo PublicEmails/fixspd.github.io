@@ -266,42 +266,7 @@ data-url="https://data.seattle.gov/resource/ppwx-mtmh.json?$select=count(*)"></s
           <div class="sodaplayground line_chart" data-type="line_chart" data-heading="Number of closed records requests per day" data-url="https://data.seattle.gov/resource/ppwx-mtmh.json?$select=date_trunc_ymd(close_date)%20as%20date,count(*)%20as%20count&$group=date_trunc_ymd(close_date)&$order=date_trunc_ymd(close_date)&$where=close_date%20IS%20NOT%20NULL" data-y="count" data-x="date"></div>
           
           
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
-<script   src="https://code.jquery.com/jquery-2.2.2.min.js"   integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="   crossorigin="anonymous"></script>
-<style>
-#chartjs-tooltip {
-     opacity: 0;
-     position: absolute;
-     background: rgba(0, 0, 0, .7);
-     color: white;
-     padding: 3px;
-     border-radius: 3px;
-     -webkit-transition: all .1s ease;
-     transition: all .1s ease;
-     pointer-events: none;
-     -webkit-transform: translate(-50%, 0);
-     transform: translate(-50%, 0);
- }
- .breakdown {
- color:#FFF;
- font-size:12px;
- 
- }
- .breakdown td, .breakdown th {
- 	vertical-align:top;
- 	padding:3px;
- 	border:1px solid #FFF;
- }
- .clear {
- 	clear:left;
- }
-</style>
-<div class="clear"></div>
-<!-- line chart canvas element --><h3>Number of new records requests per day in new system</h3>
-<canvas id="opened_requests_per_day" style="width:100%;height:400px;"></canvas>
-<h3>Number of closed records requests per day in new system</h3>
-<canvas id="closed_requests_per_day" style="width:100%;height:400px;"></canvas>
-
+          
         <!--/main col-->
     </div>
 
