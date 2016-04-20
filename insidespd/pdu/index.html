@@ -254,6 +254,8 @@ data-url="https://data.seattle.gov/resource/ppwx-mtmh.json?$select=count(*)"></s
 	height:400px;
 }
           </style>
+          <div class="sodaplayground pie_chart" data-heading="Status of SPD datasets that are supposed to be updated at least once a day" data-type="dataset_statuses" data-domain="data.seattle.gov" data-datasetids="ppwx-mtmh"></div>
+
           <div id="backlog_table" class="sodaplayground pie_chart" style="background:#000 url('/images/PDU_discs.jpg') no-repeat;color:#FFF;background-size:contain;" data-show-row-num="true" data-heading="Backlog in old system" data-type="table" data-url="https://data.seattle.gov/resource/a4j2-uu8v.json?$select=item_requested,%20received_date&$order=received_date&$where=completed_date%20IS%20NULL&$limit=20000" data-cols="received_date,item_requested" data-labels="Received date,Short description"></div>
           <div class="sodaplayground pie_chart" data-heading="Requester type in new system" data-type="pie_chart" data-domain="data.seattle.gov" data-datasetid="ppwx-mtmh" data-column="city_requestertype_internal"></div>
 
