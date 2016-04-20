@@ -293,11 +293,13 @@ function handleSODAPlayground() {
           
         }
       }
+      if (url) {
       var data = JSON.parse($.ajax({
           type: "GET",
           url: url,
           async: false
       }).responseText).reverse();
+      }
       var heading = item.attr('data-heading');
       var variables = {};
       for (var i = 0, atts = item[0].attributes, n = atts.length, arr = []; i < n; i++){
@@ -338,7 +340,8 @@ function handleSODAPlayground() {
             	break;
         }   
     } catch (e) {
-        console.log(e)
+    	
+        console.log($(this).attr('data-type')+' '+e)
     }
   }); 
 }
