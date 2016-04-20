@@ -253,7 +253,7 @@ function dataset_statuses(item) {
 	        async: false
 	    }).responseText);
 	    hours = (moment.duration(moment().diff(moment(data['rowsUpdatedAt']*1000))).asHours());
-    	if (hours) {
+    	if (hours > 24) {
             html += '<tr style="background:red;color:#FFF;">';
     	} else {
             html += '<tr>';
