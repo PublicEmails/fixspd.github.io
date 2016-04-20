@@ -241,12 +241,7 @@ function horizontal_bar_chart(item, url) {
     new Chart(ctx).HorizontalBar(linedata);
 }
 function dataset_statuses(item) {
-    //url = 'https://'+item.attr('data-domain')+'/resource/'+item.attr('data-datasetid')+'.json?$select=count(*) as count';
-    var data = JSON.parse($.ajax({
-        type: "GET",
-        url: url,
-        async: false
-    }).responseText);
+    
     var html = '<table class="table small">';
     datasets = item.attr('data-datasetids').split(',');
     $.each(datasets, function(i, v){
@@ -258,7 +253,7 @@ function dataset_statuses(item) {
 	        async: false
 	    }).responseText);
         html += '<td>'+data['name']+'</td>';
-        html += '<td>'+data['rowsUpdatedAt']+'</td>';
+        html += '<td>'+(moment()-moment(data['rowsUpdatedAt']))+'</td>';
         html += '</tr>';
     })
     html += '</table>';
