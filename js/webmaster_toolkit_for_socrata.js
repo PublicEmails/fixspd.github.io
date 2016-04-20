@@ -245,18 +245,19 @@ function dataset_statuses(item) {
     var html = '<table class="table small">';
     datasets = item.attr('data-datasetids').split(',');
     $.each(datasets, function(i, v){
-    	hours = (moment.duration(moment().diff(moment(data['rowsUpdatedAt']*1000))).asHours());
-    	if (hours) {
-            html += '<tr style="background:red;color:#FFF;">';
-    	} else {
-            html += '<tr>';
-    	}
+    	
         url = 'https://'+item.attr('data-domain')+'/api/views/'+v+'.json';
         var data = JSON.parse($.ajax({
 	        type: "GET",
 	        url: url,
 	        async: false
 	    }).responseText);
+	    hours = (moment.duration(moment().diff(moment(data['rowsUpdatedAt']*1000))).asHours());
+    	if (hours) {
+            html += '<tr style="background:red;color:#FFF;">';
+    	} else {
+            html += '<tr>';
+    	}
         html += '<td>'+data['name']+'</td>';
         html += '<td>'+hours+' hours</td>';
         html += '</tr>';
