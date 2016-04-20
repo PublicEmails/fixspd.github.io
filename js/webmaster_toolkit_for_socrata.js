@@ -245,7 +245,12 @@ function dataset_statuses(item) {
     var html = '<table class="table small">';
     datasets = item.attr('data-datasetids').split(',');
     $.each(datasets, function(i, v){
-        html += '<tr>';
+    	hours = (moment.duration(moment().diff(moment(data['rowsUpdatedAt']*1000))).asHours());
+    	if (hours) {
+            html += '<tr style="background:red;color:#FFF;">';
+    	} else {
+            html += '<tr>';
+    	}
         url = 'https://'+item.attr('data-domain')+'/api/views/'+v+'.json';
         var data = JSON.parse($.ajax({
 	        type: "GET",
@@ -253,7 +258,7 @@ function dataset_statuses(item) {
 	        async: false
 	    }).responseText);
         html += '<td>'+data['name']+'</td>';
-        html += '<td>'+(moment.duration(moment().diff(moment(data['rowsUpdatedAt']*1000))).asHours())+' hours</td>';
+        html += '<td>'+hours+' hours</td>';
         html += '</tr>';
     })
     html += '</table>';
