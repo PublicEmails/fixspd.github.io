@@ -267,6 +267,7 @@ function dataset_statuses(item) {
 function handleSODAPlayground() {
   $.each($('.sodaplayground'), function(item) {
     item = $(this);
+    url = '';
     try {
       if (item[0].hasAttribute("data-url")) {
         var url = item.attr('data-url');  
