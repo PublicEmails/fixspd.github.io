@@ -253,7 +253,7 @@ function dataset_statuses(item) {
 	        async: false
 	    }).responseText);
         html += '<td>'+data['name']+'</td>';
-        html += '<td>'+(moment.duration(moment().diff(moment(data['rowsUpdatedAt']))).asHours())+' hours</td>';
+        html += '<td>'+(moment.duration(moment().diff(moment(data['rowsUpdatedAt']*1000))).asHours())+' hours</td>';
         html += '</tr>';
     })
     html += '</table>';
